@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="e-voting.css" />
+    <link href="fontawesome-free-6.1.1-web/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <title>E-Voting</title>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="printer-container mb-5">
+        <h1 class="fs-1 fw-bold text-primary">Adex E-Voting System</h1>
+      </div>
+      <div class="screen-container">
+        <div class="logo-container">
+          <img src="pic/votelogo.jpeg" alt="" />
+          <img src="pic/inec.jpeg" alt="" />
+        </div>
+        <div class="language-container">
+          <label for="validationCustom04" class="form-label">Languages :</label>
+          <select
+            class="form-select form-select-lg w-50"
+            aria-label=".form-select-lg example"
+            id="formSelect"
+            onchange="lan()"
+          >
+            <option value="english">English</option>
+            <option value="yoruba">Yoruba</option>
+            <option value="igbo">Igbo</option>
+            <option value="hausa">Hausa</option>
+            <option value="">Ibibio</option>
+            <option value="">Tiv</option>
+          </select>
+        </div>
+        <div class="d-grid gap-3 col-12 mx-auto" id="homeBtn">
+          <button
+            class="btn btn-primary fs-2"
+            id="reg"
+            type="button"
+            onclick="register()"
+          >
+            register
+          </button>
+          <button
+            class="btn btn-primary fs-2"
+            id="vote"
+            type="button"
+            onclick="voteNow()"
+          >
+            vote
+          </button>
+          <button
+            class="btn btn-success fs-2"
+            id="help"
+            type="button"
+            onclick="rules()"
+          >
+            help
+          </button>
+        </div>
+        <div id="loading"></div>
+      </div>
+
+      <div id="rulesContainer">
+        <div id="rulesModal">
+          <div class="rules-modal-content">
+            <h1>Welcome to the e-voting system Help center</h1>
+            <div class="rules-modal-header">
+              <h2>Voting Instructions & Help</h2>
+              <button
+                class="rules-modal-close"
+                id="closeBtn"
+                onclick="closeSaveNameModal()"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="rules-modal-body">
+              <h3>Overview</h3>
+              This electronic voting (e-voting) system is developed to ease the
+              stress of having to stand at the polling unit and also waiting for
+              some days before the winner is decided.
+              <p>
+                This system focus on many steps or procedures that the voters
+                has to take before a successful voting ✅ but before that, let
+                look into this very important note.
+              </p>
+              <p>
+                There are many different technologies that can be used to
+                support the electoral process. This guide will focus on
+                electronic technologies that assist voting and the subsequent
+                counting of votes.
+              </p>
+              <p>
+                When discussing electronic voting, two separate, but sometimes
+                related technologies are generally referred to – electronic
+                voting and electronic counting. The traditional paper-based
+                voting system consists of a voter manually marking the paper
+                ballot and then the ballot being counted by hand by election
+                officials. In elections using electronic voting or counting
+                technologies, one or both of these processes are automated
+                electronically.
+              </p>
+
+              <h3>Registration Guides</h3>
+              Kindly fill out the registration form and the system will look up
+              your voter registration status. Remember you can't vote unless
+              you've registered and you can't register if you are below the age
+              of 18. Our system check properly using your National
+              Identification to confirm your age and once you are eligible, you
+              can then proceed with the registration.
+              <p>
+                Take a few minutes to verify your registration status today.
+                Also note that after a successful registration, voters will be
+                given a unique ID and a special key that he/she will be using to
+                login to the voting portal.
+              </p>
+              Note: Save your ID and the Key that the system will generate for
+              you as failure to remember them maybe disqualified you from
+              voting.
+
+              <h3>Voting Methods</h3>
+              With a registered and given ID and Key, login and you will be
+              directed to the voting portal and in the voting portal, you will
+              be provided with the types of election depending on the election.
+              For example,
+              <ul>
+                <li>Presidential</li>
+                <li>Governor</li>
+                <li>House of Rep</li>
+                <li>State Honorable</li>
+                <li>LGA, etc.</li>
+              </ul>
+              Click on the election type you wish to vote first and in the next
+              window, where election contestant names, party logo and name
+              appears, there's a voting button at the right side of every
+              contestant, click on any of your choice and the your vote is
+              recorded automatically click next to vote for the next election
+              type and once you are done, click on the finish button and all
+              your choice will be made available to you. Click on print to have
+              a copy of the vote and you can end the vote for the next voter.
+              Thanks Note: Once you've vote, you can't come back to vote again.
+              Any such steps will be treated as illegal.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="finger-print-container"></div>
+    </div>
+    <script src="e-voting.js"></script>
+    <script src="bootstrap.js"></script>
+  </body>
+</html>

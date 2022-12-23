@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="e-voting.css" />
+    <link href="fontawesome-free-6.1.1-web/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <title>E-Voting-Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-logo-container">
+        <img src="pic/votelogo.jpeg" alt="" />
+        <img src="pic/inec.jpeg" alt="" />
+      </div>
+      <div class="login-main">
+        <h1 id="h1">welcome to the 2023 general election</h1>
+        <div class="col-md-4 gap-5 input-area">
+                <h2>Login to Vote</h2>
+          <div class="mb-4">
+            <label for="validationCustom02" class="form-label"
+              >Voter ID / Email / Phone Number</label
+            >
+            <input
+              type="text"
+              class="login-input form-control"
+              id="loginId"
+              value=""
+              required
+              placeholder="Enter either your ID / Email / Phone Number"
+              id="email"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="validationCustom02" class="form-label">Voter Key</label>
+            <input
+              type="number"
+              class="login-input form-control"
+              placeholder="Enter your key"
+              id="pass"
+            />
+          </div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="check">
+          <span
+            ><input type="checkbox" id="checkBox" /> Accept Terms And Condition
+            of Vote</span
+          >
+          <a href="" id="forgotPass">Forgot password</a>
+        </div>
+        <button id="loginBtn" onclick="signIn()">Login</button>
+
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">
+                  Put your finger for 5 seconds for login
+                </h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <h3 id="loading"></h3>
+                <button id="fingerprintBtnInModal">
+                  <i class="fas fa-fingerprint" onmouseover="fingerprint()"></i>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#myModal"
+          id="fingerprintBtn"
+        >
+          <i class="fas fa-fingerprint"></i>
+        </button>
+      </div>
+    </div>
+    <script src="e-voting.js"></script>
+    <script src="bootstrap.js"></script>
+  </body>
+</html>
