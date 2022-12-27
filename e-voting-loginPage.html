@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="bootstrap.css" />
     <title>E-Voting-Login</title>
   </head>
-  <body>
+  <body class="login-body">
     <div class="container">
       <div class="login-logo-container">
-        <img src="pic/votelogo.jpeg" alt="" />
-        <img src="pic/inec.jpeg" alt="" />
+        <img src="pic/votelogo.png" alt="" />
+        <img src="pic/inec1.png" alt="" />
       </div>
       <div class="login-main">
-        <h1 id="h1">welcome to the 2023 general election</h1>
-        <div class="col-md-4 gap-5 input-area">
-                <h2>Login to Vote</h2>
-          <div class="mb-4">
-            <label for="validationCustom02" class="form-label"
-              >Voter ID / Email / Phone Number</label
+        <!-- <h1 id="h1">welcome to the 2023 general election</h1> -->
+        <div class="col-md-12 gap-5 input-area pb-1">
+          <div class="w-100 text-center text-bg-danger" id="warningAlert"></div>
+                <!--<h2>Login to Vote</h2>!-->
+                <div class="mb-4">
+            <label for="validationCustom02" class="form-label fw-bold">Voter ID / Email / Phone Number</label
             >
             <input
               type="text"
@@ -34,7 +34,7 @@
             />
           </div>
           <div class="mb-4">
-            <label for="validationCustom02" class="form-label">Voter Key</label>
+            <label for="validationCustom02" class="form-label fw-bold">Voter Key</label>
             <input
               type="number"
               class="login-input form-control"
@@ -44,18 +44,28 @@
           </div>
           <div class="valid-feedback">Looks good!</div>
         </div>
-        <div class="check">
+        <div class="check w-100 d-flex flex-column">
           <span
-            ><input type="checkbox" id="checkBox" /> Accept Terms And Condition
+            ><input type="checkbox" id="checkBox" required /> Accept Terms And Condition
             of Vote</span
           >
-          <a href="" id="forgotPass">Forgot password</a>
+          <a href="" id="forgotPass" class="w-auto text-end mt-3">Forgot password</a>
         </div>
-        <button id="loginBtn" onclick="signIn()">Login</button>
+        <button class="btn btn-primary w-100 mt-3 mb-4" id="loginBtn" onclick="signIn()">Login</button>
+        <div class="w-100 text-center fs-4 fw-bold">or login using</div>
+        <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+        id="fingerprintBtn"
+      >
+        <i class="fas fa-fingerprint"></i>
+      </button>
 
         <div class="modal fade" id="myModal">
           <div class="modal-dialog modal-sm modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content text-dark">
               <div class="modal-header">
                 <h4 class="modal-title">
                   Put your finger for 5 seconds for login
@@ -69,7 +79,7 @@
               <div class="modal-body">
                 <h3 id="loading"></h3>
                 <button id="fingerprintBtnInModal">
-                  <i class="fas fa-fingerprint" onmouseover="fingerprint()"></i>
+                  <i class="fas fa-fingerprint modal-fingerprint" onmouseover="fingerprint()"></i>
                 </button>
               </div>
               <div class="modal-footer">
@@ -84,16 +94,6 @@
             </div>
           </div>
         </div>
-
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#myModal"
-          id="fingerprintBtn"
-        >
-          <i class="fas fa-fingerprint"></i>
-        </button>
       </div>
     </div>
     <script src="e-voting.js"></script>
