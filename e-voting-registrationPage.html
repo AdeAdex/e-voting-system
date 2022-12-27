@@ -11,16 +11,38 @@
   </head>
   <body>
     <div class="sign-up-form">
-      <h1 class="">voters registration form</h1>
-      <div class="file-btn">
-        <div class="file2">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner h-100">
+    <div class="carousel-item active h-100">
+      <img src="pic/NIN-app.jpeg" class="d-block w-100 carousel-big-screen" alt="...">
+    </div>
+    <div class="carousel-item h-100">
+      <img src="pic/ima.jpeg" class="d-block w-50 m-auto carousel-img carousel-big-screen" alt="...">
+    </div>
+    <div class="carousel-item h-100">
+      <img src="pic/NIN-lady.png" class="d-block w-100 carousel-big-screen" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> 
+      <!-- <form class="row g-3 needs-validation" id="fm" novalidate> -->
+      <div class="reg-container">
+        <h1 class="w-100 text-center fs-4 text-uppercase position-sticky top-0 b-0 pt-3 reg-h1">voters registration form</h1>
+      <div class="file-btn mb-5 col-md-8 m-auto reg-form">
+        <div class="file2 w-100">
           <img src="pic/avatar.png" id="myFrame" />
-          <input type="file" onchange="preview()" id="photo" />
+          <input type="file" onchange="preview()" id="avatar" />
         </div>
       </div>
-      <!-- <form class="row g-3 needs-validation" id="fm" novalidate> -->
-      <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">First name</label>
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom01" class="form-label mt-2">First name</label>
         <input
           type="text"
           class="form-control"
@@ -30,8 +52,8 @@
         />
         <div class="valid-feedback">Looks good!</div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom02" class="form-label">Last name</label>
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom02" class="form-label mt-2">Last name</label>
         <input
           type="text"
           class="form-control"
@@ -41,8 +63,8 @@
         />
         <div class="valid-feedback">Looks good!</div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustomUsername" class="form-label"
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustomUsername" class="form-label mt-2"
           >National Identification Number</label
         >
         <div class="input-group has-validation">
@@ -57,8 +79,8 @@
           <div class="invalid-feedback">Please choose a username.</div>
         </div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom04" class="form-label">Country</label>
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom04" class="form-label mt-2">Country</label>
         <select class="form-select" id="countryOption" required>
           <option selected disabled value="">Choose...</option>
           <option value="Nigeria">Nigeria</option>
@@ -73,8 +95,8 @@
         </select>
         <div class="invalid-feedback">Please select a valid country.</div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom04" class="form-label">State</label>
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom04" class="form-label mt-2">State</label>
         <select class="form-select" id="stateOption" required>
           <option selected disabled value="">Choose...</option>
           <option value="Oyo State">Oyo State</option>
@@ -87,25 +109,25 @@
         </select>
         <div class="invalid-feedback">Please select a valid state.</div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom05" class="form-label">Email</label>
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom05" class="form-label mt-2">Email</label>
         <input type="email" class="form-control" id="email" required />
         <div class="invalid-feedback">Please provide a valid email.</div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom05" class="form-label">Phone Number</label>
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom05" class="form-label mt-2">Phone Number</label>
         <input type="tel" class="form-control" id="phoneNumber" required />
         <div class="invalid-feedback">Please provide a valid phone number.</div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom05" class="form-label">Date of Birth</label>
-        <input type="date" class="form-control" id="dateOfBirth" required />
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom05" class="form-label mt-2">Date of Birth</label>
+        <input type="date" class="form-control" id="dateOfBirth" onchange="getAge()" required />
         <div class="invalid-feedback">
           Please provide a valid date of birth.
         </div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom05" class="form-label">Gender</label>
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom05" class="form-label mt-2">Gender</label>
         <div class="col3">
           <div class="options-div">
             <label for="male" class="gender-option">
@@ -133,13 +155,13 @@
         </div>
         <div class="invalid-feedback">Please select a valid gender.</div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom05" class="form-label">Password</label>
+      <div class="col-md-8 m-auto reg-form">
+        <label for="validationCustom05" class="form-label mt-2">Password</label>
         <input type="password" class="form-control" id="pass" required />
         <div class="invalid-feedback">Please provide a valid password.</div>
       </div>
-      <div class="col-md-4" id="signUpCheck">
-        <div class="form-check">
+      <div class="col-md-8 m-auto reg-form" id="signUpCheck">
+        <div class="form-check mt-2">
           <input
             class="form-check-input"
             type="checkbox"
@@ -153,9 +175,9 @@
           <div class="invalid-feedback">You must agree before submitting.</div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-8 m-auto d-flex mt-4 reg-form">
         <button
-          class="btn btn-primary col-10"
+          class="btn btn-primary col-10 m-auto"
           type="submit"
           id="submitReg"
           onclick="submitRegistration()"
@@ -163,14 +185,16 @@
           Create Account
         </button>
       </div>
+      </div>
       <!-- </form> -->
     </div>
 
+    <div class="d-flex">
     <div
-      class="bg-black w-100 justify-content-center p-3 h-100 position-fixed top-0 start-0 mt-auto mb-auto"
+      class="bg-black w-100 justify-content-center p-3 h-100 position-fixed top-0 start-0 end-0 mt-auto mb-auto"
       id="showPassContainer"
     >
-      <div class="w-100 bg-info h-70 mt-auto mb-auto p-2 position-relative">
+      <div class="w-100 bg-light h-70 mt-auto mb-auto p-2 position-relative">
         <div class="d-flex justify-content-end position-relative">
           <button
             class="rules-modal-close border-danger border"
@@ -180,7 +204,7 @@
           </button>
         </div>
         <div
-          class="bg-danger  p-3 d-flex flex-column justify-content-center  mt-4 colo text-white"
+          class="p-3 d-flex flex-column justify-content-center  mt-4 colo text-primary"
         >
           <h1 class="mb-5 text-center" id="welcomeName"></h1>
           <p class="fs-3" id="idn"></p>
@@ -196,7 +220,11 @@
         </div>
       </div>
     </div>
+    </div>
 
     <script src="e-voting.js"></script>
+    <script src="./bootstrap.js"></script>
+    <script src="./bootstrap.bundle.js"></script>
+    <script src="./bootstrap.bundle.min.js"></script>
   </body>
 </html>
