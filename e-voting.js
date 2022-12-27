@@ -8,6 +8,47 @@ function register() {
   }, 1000);
 }
 
+function showTotal() {
+  showTotalReg.innerHTML = `${votersDetails.length} `;
+  // totalParty.innerHTML = `${}`
+}
+
+/*function TDate() {
+    var selectedDate = dateOfBirth.value;
+    var ToDate = new Date();
+    if (selectedDate < Date.now()) {
+        alert("The Date must be Bigger or Equal to today date")
+        return false;
+    }
+    return true;
+} */
+
+
+
+function getAge() {
+    var enteredValue = $get('<%=ui_txtDOB.ClientID %>');;
+var enteredAge = getAge(enteredValue.value);
+if( enteredAge < 18 ) {
+    alert("DOB not valid");
+    enteredValue.focus();
+    return false;
+}
+}
+
+
+
+function TDate() {
+    var UserDate = dateOfBirth.value;
+    var ToDate = new Date();
+    if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+          alert("The Date must be Bigger or Equal to today date");
+          return false;
+     }
+    return true;
+}
+
+
+
 var votersDetails = [];
 if (localStorage.localVoters) {
   var oldVoters = JSON.parse(localStorage.getItem("localVoters"));
@@ -37,6 +78,7 @@ function submitRegistration() {
     votersDetails.push(voters);
     localStorage.setItem("localVoters", JSON.stringify(votersDetails));
     showPass();
+    showTotal();
   }
 }
 
@@ -45,7 +87,7 @@ function voteNow() {
 }
 
 function rules() {
-  rulesModal.style.display = "block";
+  rulesModal.style.display = "flex";
 }
 
 function showPass() {
@@ -55,7 +97,7 @@ function showPass() {
     keyNumber.innerHTML = "";
     welcomeName.innerHTML = "";
     welcomeName.innerHTML = `Welcome <br> ${votersDetails[index].fname} ${votersDetails[index].lname} <br>  please save your login details as`;
-    idn.innerHTML += `ID: ADEX${votersDetails[index].id}`;
+    idn.innerHTML += `ID: ADEX-${votersDetails[index].id}`;
     keyNumber.innerHTML += `Key: ${votersDetails[index].key}`;
   }
   localStorage.setItem("localVoters", JSON.stringify(votersDetails));
@@ -77,7 +119,6 @@ function toLogin() {
   window.location.href = "e-voting-loginPage.html";
 }
 
-
 function signIn() {
   var votersId = loginId.value;
   var votersKey = pass.value;
@@ -92,21 +133,56 @@ function signIn() {
     }
   }
 
-  if (found == true) {
+  // logic to check whether the User entered email is in allElectionResult array
+  let foundInAllElectionResult = false;
+  for (let user of allElectionResult) {
+    if (user.myEmail === votersId) {
+      foundInAllElectionResult = true;
+      break;
+    }
+  }
+
+  if (found == true && foundInAllElectionResult) {
+    warningAlert.innerHTML = `<i class="fas fa-warning" id="faWarning"></i> Operation Declined. <p>You cant vote twice, you've already voted.</p>`;
+  } else if (found == true && !foundInAllElectionResult) {
     window.location.href = "e-voting-votingPage.html";
+  } else if (found == false && !foundInAllElectionResult) {
+    alert("re-type");
   } else {
-  alert("Incorrect details, Kindly please check what you enter and re-type");
+    alert("Incorrect details, Kindly please check what you enter and re-type");
+  }
 }
 
-
-
- /* if (found == true && allElectionResult.includes('myEmail')) {
-    alert("yhea");
-  } else if (found == true && (!allElectionResult.includes('myEmail'))) {
-    alert("No way")
-  }*/
-    
+function fingerprint() {
+  loading.innerHTML = `Fingerprint Scanner Reading Your finger`;
+  let waitingTime = setInterval(function () {
+    if (true) {
+      window.location.href = "e-voting-votingPage.html";
+    }
+  }, 5000);
 }
+
+// function signIn() {
+//   var votersId = loginId.value;
+//   var votersKey = pass.value;
+//   var found = false;
+//   for (let index = 0; index < votersDetails.length; index++) {
+//     if (
+//       (votersDetails[index].id || votersDetails[index].email == votersId) &&
+//       votersDetails[index].key == votersKey
+//     ) {
+//       found = true;
+//       break;
+//     }
+//   }
+
+//   if (found == true) {
+//     window.location.href = "e-voting-votingPage.html";
+//   } else {
+//   alert("Incorrect details, Kindly please check what you enter and re-type");
+// }
+
+// }
 
 function lan() {
   if (formSelect.value == "yoruba") {
@@ -134,39 +210,58 @@ if (localStorage.localResults) {
   electionResult = oldResult;
 }
 
-function myChoice(para) {
+function myChoice(para, para2) {
   var myElectionResult = {
     myElectionChoice: para,
+    myElectionChoiceName: para2,
+    // myElectionChoiceImg: picture1,
   };
   electionResult.splice(0, 1, myElectionResult);
   localStorage.setItem("localResults", JSON.stringify(electionResult));
   fingers.style.backgroundColor = "red";
 }
 
-
 function dispMyChoice() {
-  myVoteResult = ""
-  for (let index = 0; index <  electionResult.length; index++) {
+  myVoteResult = "";
+  myVoltResultName = "";
+  mySelf = "";
+  let firstN;
+  let lastN;
+  for (let index = 0; index < votersDetails.length; index++) {
+    firstN = `${votersDetails[index].fname}`;
+    lastN = `${votersDetails[index].lname}`;
+  }
+  for (let index = 0; index < electionResult.length; index++) {
     // electionResult = JSON.parse(localStorage.getItem("localResults"));
     sweetAlert.style.display = "flex";
-  sweetAlert.innerHTML = `
-  <div class="w-100 bg-light h-75 m-auto d-flex flex-column p-5 sweet-alert-modal-content">
+    sweetAlert.innerHTML = `
+  <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
         <div class=" sweet-alert d-flex justify-content-center"><i class="fas fa-check m-auto"></i></div>
         <div class="w-100">
-          <h3 class="sweet-alert-h3 fs-1 text-center"><p>Thank you for voting</p>  <strong id="mySelf">${votersDetails[index].fname} ${votersDetails[index].lname}</strong> <p>voting successful, kindly please remember to print or screenshot your Volting result.</p></h3>
+          <h3 class="sweet-alert-h3 text-center"><p>Thank you for voting</p>  <strong id="mySelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Voting successful, kindly please remember to print or screenshot your Volting result.</p></h3>
         </div>
-        <div class="m-5 text-center fs-1 fw-bold text-uppercase" id="myVoltResult">${electionResult[index].myElectionChoice}</div>
+        <div class="m-2 text-center fw-bold text-uppercase">
+        <table class="table w-100 fs-6 ">
+          <tr>
+            <th>Name</th>
+            <th>Party logo</th>
+            <th>Party Name</th>
+          </tr>
+          <tr>
+            <td id="myVoltResultName">${electionResult[index].myElectionChoiceName}</td>
+            <td></td>
+            <td id="myVoltResult" class="">${electionResult[index].myElectionChoice}</td>
+          </tr>
+        </table> 
+        </div>
         <footer class="w-100">
           <button class="btn btn-success okay-btn" onclick="closeSweetAlert()"> Okay</button>
+          <button class="btn btn-primary fs-4 print-btn" onclick="window.print();">Print</button>
         </footer>
       </div>
-  `
+  `;
   }
 }
-
-
-
-
 
 var allElectionResult = [];
 if (localStorage.localResultsAll) {
@@ -175,22 +270,23 @@ if (localStorage.localResultsAll) {
 }
 
 function finish() {
-  for (let index = 0; index <  votersDetails.length; index++) {
-    disp.innerHTML = `${votersDetails[index].fname}`
-    disp3.innerHTML = `${votersDetails[index].state}`
-    disp4.innerHTML = `${votersDetails[index].email}`
-    disp5.innerHTML = `${electionResult[index].myElectionChoice}`
-  } 
-    var allVotersElectionResult = {
-  name: disp.innerHTML, 
-  myState: disp3.innerHTML,
-  myEmail: disp4.innerHTML, 
-  myLatestChoice: disp5.innerHTML,
-    } 
+  for (let index = 0; index < votersDetails.length; index++) {
+    disp.innerHTML = `${votersDetails[index].fname}`;
+    disp3.innerHTML = `${votersDetails[index].state}`;
+    disp4.innerHTML = `${votersDetails[index].email}`;
+    
+  }
+  for (let index = 0; index < electionResult.length; index++) {
+    disp5.innerHTML = `${electionResult[index].myElectionChoice}`;
+  }
+  var allVotersElectionResult = {
+    name: disp.innerHTML,
+    myState: disp3.innerHTML,
+    myEmail: disp4.innerHTML,
+    myLatestChoice: disp5.innerHTML,
+  };
 
-allElectionResult.push(allVotersElectionResult);
-localStorage.setItem("localResultsAll", JSON.stringify(allElectionResult) );
-window.location.href = "final.html";
+  allElectionResult.push(allVotersElectionResult);
+  localStorage.setItem("localResultsAll", JSON.stringify(allElectionResult));
+  window.location.href = "final.html";
 }
-
-
