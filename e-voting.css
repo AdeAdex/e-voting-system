@@ -9,30 +9,41 @@ body {
   height: auto;
 }
 
-.main-container {
-  padding: 50px;
-  /* border: 1px solid red; */
+.homepage-body {
+  background-color: rgb(33, 202, 33);
 }
 
 .printer-container {
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 10px 0px;
 }
 
 .logo-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 70px;
+  margin-bottom: 0px;
   width: 100%;
-  /* background-color: purple; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px 10px;
 }
 
-.logo-container img,
-.login-logo-container img {
-  /* width: ; */
-  height: 100px;
-  width: 45%;
+.inec-logo, .vote-logo, .login-logo-container img {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40%;
+}
+
+.information {
+  background-image: url('pic/ngflag.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: color-burn;
+  color: white;
+  background-color: green;
 }
 
 .language-container {
@@ -45,6 +56,11 @@ body {
   font-size: 15px;
   font-weight: bold;
   margin: auto 5px;
+}
+
+.screen-container {
+  padding-top: 0px;
+  margin: 0px 50px;
 }
 
 #formSelect {
@@ -76,43 +92,130 @@ body {
   background-image: url("pic/help2.png");
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .sign-up-form {
-  padding: 50px;
-}
-.sign-up-form h1 {
-  text-transform: capitalize;
+  height: 100vh;
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(139, 160, 54);
 }
 
-.sign-up-form img {
-  height: 100px;
-  /* background-color: red; */
-  margin: 20px 0px;
+#carouselExampleAutoplaying {
+  width: 100% !important ;
+  height: 23% !important ;
+  background-color: rgb(139, 160, 54) !important ;
+  position: fixed !important;
+  display: flex;
+  padding-bottom: 20px;
+} 
+#carouselExampleAutoplaying img {
+  height: 100%;
+} 
+
+.reg-container .reg-h1 {
+  background-color: rgb(139, 160, 54) ;
 }
+
+.carousel-img {
+  border-radius: 50%;
+}
+
+#myFrame {
+  height: 100px;
+}
+
+.reg-container {
+  position: absolute;
+  height: 80% !important;
+  color: white;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 0px 50px 30px 50px;
+  border-radius: 30px 30px 0px 0px;
+  background-image: url('pic/14.jpg');
+  background-color:darkcyan;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  background-blend-mode: multiply;
+  overflow-y: scroll;
+} 
+
+.reg-container input{
+  background-color: inherit;
+  transition: .5s;
+  color: whitesmoke;
+} 
+.reg-container select {
+  background-color: inherit;
+  color: white;
+} 
+.reg-container select:focus {
+  background-color: inherit;
+  transition: .5s;
+  color: whitesmoke;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .container {
-  padding: 50px;
-  /* background-color: red; */
+  padding: 0px 0px;
+  background-image: url(pic/login-background-image.jpeg);
+  background-repeat: no-repeat;
+  background-position: 10%;
+  background-size: 100% 100%;
 }
 
 .login-logo-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 0px 0px;
+  margin: 30px 0px;
 }
 
 .login-main {
   width: 100%;
-  padding: 50px;
-  /* border: 1px solid red; */
+  border: 3px solid #3498db;
+  border-top: unset;
+  padding: 20px 30px;
+  margin-top: 70px;
+  color: whitesmoke;
 }
 .container h1 {
   text-transform: capitalize;
 }
 
 .input-area {
-  margin-top: 50px;
-  background-color: whitesmoke;
+  margin-top: 40px;
 }
 
 .input-area h2 {
@@ -122,11 +225,45 @@ body {
   color: whitesmoke;
 }
 
+.input-area input {
+    color: darkorange;
+    border: 3px solid #3498db;
+    transition: .5s;
+    border-radius: 20px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 0px 10px;
+    background-color: inherit;
+    line-height: 40px;
+    box-shadow: inset 0px 0px 2px gray;
+}
+
+.input-area input::placeholder {
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #rulesModal {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
+  padding-top: 0px;
   left: 0;
   top: 0;
   width: 100%;
@@ -150,7 +287,7 @@ body {
 }
 .rules-modal-content {
   height: 90%;
-  background-color: dimgray;
+  /* background-color: dimgray; */
   margin: auto 0px;
   overflow-y: auto;
 }
@@ -244,19 +381,12 @@ body {
   justify-content: end;
 }
 
-@media screen and (min-width: 600px) {
-  .change-name-modal,
-  #rulesModal {
-    position: unset;
-  }
-}
 
 #showPassContainer {
   display: none;
 }
 
-
-.rules-modal-close{
+.rules-modal-close {
   border-radius: 50% !important;
   width: 50px !important;
   height: 50px;
@@ -267,13 +397,40 @@ body {
   color: white;
 }
 
-table {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.voting-page {
   border: 8px solid green;
 }
 
-td, th {
+.captin-caption {
+  border-bottom: 5px solid white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.voting-page td,
+.voting-page th {
   text-transform: capitalize;
   border: 3px solid green !important;
+}
+
+.voting-page thead th {
+  text-transform: capitalize;
+  border: 3px solid green !important;
+  padding: 20px 0px !important;
 }
 td img {
   width: 100%;
@@ -285,12 +442,50 @@ td h3 {
   text-align: center;
 }
 
+#finger {
+  /* display: flex; */
+  /* background-color: red; */
+}
+
+.voting-page .fa-fingerprint {
+  color: blue;
+  margin: auto 0px;
+  font-size: 50px;
+  text-align: center;
+}
+
+#fingerprintBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  margin: 10px auto;
+}
+
 .fa-fingerprint {
   width: 100%;
-  font-size: 60px;
-  text-align: center;
-  color: blue;
+  font-size: 30px;
+  color: white;
+  margin: auto 0px;
 }
+
+#fingerprintBtnInModal {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: blue;
+  display: flex;
+  margin: 0px auto;
+}
+
+.modal-fingerprint {
+  font-size: 60px;
+}
+
+
+
+
+
 
 .my-choice {
   background-color: rgb(255, 123, 0) !important;
@@ -299,6 +494,7 @@ td h3 {
 .sweet-alert-modal {
   background-color: rgb(209, 231, 209);
   display: none;
+  width: 100%;
 }
 
 .sweet-alert {
@@ -320,4 +516,126 @@ td h3 {
   box-shadow: 0px 0px 2px 1px blue;
   display: flex !important;
   margin: 0px auto;
+}
+
+.print-btn {
+  padding: 2px 15px !important;
+  display: flex !important;
+  margin-left: auto;
+  justify-content: center;
+  width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+.contestant-page {
+  height: 100vh;
+  background-image: url('pic/idshow1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 100%;
+} 
+
+
+
+
+
+@media screen and (min-width: 600px) {
+  .inec-logo, .vote-logo, .login-logo-container img {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 40%;
+  }
+
+  .homepage-body {
+    background-image: url("pic/v1.jpeg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+  .main-container {
+    width: 40% !important;
+    margin: 0px auto;
+    padding-bottom: 60px;
+    background-color: rgb(33, 202, 33);
+  }
+
+  #rulesModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 0px;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    margin: 0px auto;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(3, 3, 31, 0.4);
+  }
+
+  .reg-form {
+    width: 40% !important;
+  }
+
+  .carousel-inner {
+    width: 40% !important;
+    margin: 0px auto;
+  }
+
+
+
+  .contestant-page {
+    height: 100vh;
+    width: 50% !important;
+    margin: 0px auto;
+    background-image: url('pic/idshow1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 100%;
+  } 
+
+  #showPassContainer {
+    display: none;
+    width: 40% !important;
+    margin: 0px auto !important;
+  }
+
+  .container {
+    width: 40% !important;
+    padding: 0px 0px;
+    background-image: url(pic/login-background-image.jpeg);
+    background-repeat: no-repeat;
+    background-position: 0%;
+    background-size: 100% 100%;
+  }
+
+  .login-body {
+    background-image: url("pic/v1.jpeg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+  .vp-main {
+    width: 40%;
+    margin: 0px auto;
+  }
+
+  .sweet-alert-modal {
+    background-color: rgb(209, 231, 209);
+    display: none;
+    width: 40%;
+    margin: 0px auto;
+  }
 }
