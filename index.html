@@ -10,59 +10,69 @@
     <title>E-Voting</title>
   </head>
 
-  <body>
+  <body class="homepage-body" onload="showTotal()">
     <div class="main-container">
-      <div class="printer-container mb-5">
-        <h1 class="fs-1 fw-bold text-primary">Adex E-Voting System</h1>
-      </div>
-      <div class="screen-container">
-        <div class="logo-container">
-          <img src="pic/votelogo.jpeg" alt="" />
-          <img src="pic/inec.jpeg" alt="" />
+      <div>
+        <div class="printer-container">
+          <h1 class="fs-1 fw-bold text-light">Adex E-Voting System</h1>
         </div>
-        <div class="language-container">
-          <label for="validationCustom04" class="form-label">Languages :</label>
-          <select
-            class="form-select form-select-lg w-50"
-            aria-label=".form-select-lg example"
-            id="formSelect"
-            onchange="lan()"
-          >
-            <option value="english">English</option>
-            <option value="yoruba">Yoruba</option>
-            <option value="igbo">Igbo</option>
-            <option value="hausa">Hausa</option>
-            <option value="">Ibibio</option>
-            <option value="">Tiv</option>
-          </select>
+        <div class="logo-container bg-light">
+          <img src="pic/votelogo.png" alt="" class="vote-logo" />
+          <img src="pic/inec1.png" alt="" class="inec-logo" />
         </div>
-        <div class="d-grid gap-3 col-12 mx-auto" id="homeBtn">
-          <button
-            class="btn btn-primary fs-2"
-            id="reg"
-            type="button"
-            onclick="register()"
-          >
-            register
-          </button>
-          <button
-            class="btn btn-primary fs-2"
-            id="vote"
-            type="button"
-            onclick="voteNow()"
-          >
-            vote
-          </button>
-          <button
-            class="btn btn-success fs-2"
-            id="help"
-            type="button"
-            onclick="rules()"
-          >
-            help
-          </button>
+        <div class="p-3 information mb-3">
+          <h4>Register Voters In Nigeria :</h4>
+          <div class="fs-1" id="showTotalReg"></div>
+          <h4>Register Political Party :</h4>
+          <div class="fs-1" id="totalParty">33</div>
         </div>
-        <div id="loading"></div>
+        <div class="screen-container">
+          <div class="language-container">
+            <label for="validationCustom04" class="form-label"
+              >Languages :</label
+            >
+            <select
+              class="form-select form-select-lg w-50"
+              aria-label=".form-select-lg example"
+              id="formSelect"
+              onchange="lan()"
+            >
+              <option value="english">English</option>
+              <option value="yoruba">Yoruba</option>
+              <option value="igbo">Igbo</option>
+              <option value="hausa">Hausa</option>
+              <option value="">Ibibio</option>
+              <option value="">Tiv</option>
+            </select>
+          </div>
+          <div class="d-grid gap-3 col-12 mx-auto" id="homeBtn">
+            <button
+              class="btn btn-primary fs-2"
+              id="reg"
+              type="button"
+              onclick="register()"
+            >
+              register
+            </button>
+            <button
+              class="btn btn-primary fs-2"
+              id="vote"
+              type="button"
+              onclick="voteNow()"
+            >
+              vote
+            </button>
+            <button
+              class="btn btn-success fs-2"
+              id="help"
+              type="button"
+              onclick="rules()"
+            >
+              help
+            </button>
+          </div>
+          <div id="loading"></div>
+        </div>
       </div>
 
       <div id="rulesContainer">
