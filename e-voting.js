@@ -326,7 +326,7 @@ function finish() {
 
     allElectionResult.push(allVotersElectionResult);
     localStorage.setItem("localResultsAll", JSON.stringify(allElectionResult));
-    window.location.href = "e-voting-homePage.html";
+    window.location.href = "index.html";
   } else {
   }
 }
