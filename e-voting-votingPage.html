@@ -9,25 +9,23 @@
     <link rel="stylesheet" href="bootstrap.css" />
     <title>E-Voting-Voting</title>
   </head>
-  <body class=" w-100">
+  <body class="w-100">
     <div class="w-90 d-grid vp-main">
       <!-- <button onclick="finish()" class="btn btn-primary w-25 fs-3 fw-bold finish-btn">Finish</button> -->
-      <table class="table table-hover table-bordered border-success table-responsive w-100 border-5 voting-page">
-        <caption-top class="text-uppercase d-flex justify-content-center pt-5 pb-3 bg-success text-white captin-caption ">The list of election contestant, their party logo & names and the fingerprint</caption-top>
+      <table
+        class="table table-hover table-bordered border-success table-responsive w-100 border-5 voting-page"
+      >
+        <caption-top
+          class="text-uppercase d-flex justify-content-center pt-5 pb-3 bg-success text-white captin-caption"
+          >The list of election contestant, their party logo & names and the
+          fingerprint</caption-top
+        >
         <thead class="text-center">
           <tr class="table-active w-100">
-            <th scope="row" class="col-1">
-              #
-            </th>
-            <th scope="row" colspan="2" class=" col-6">
-              names
-            </th>
-            <th scope="row" class="col-2">
-              party logo
-            </th>
-            <th scope="row" class="col-3">
-              fingerprint
-            </th>
+            <th scope="row" class="col-1">#</th>
+            <th scope="row" colspan="2" class="col-6">names</th>
+            <th scope="row" class="col-2">party logo</th>
+            <th scope="row" class="col-3">fingerprint</th>
           </tr>
         </thead>
         <tbody>
@@ -35,101 +33,211 @@
             <th scope="row" class="col-1">1</th>
             <td class="col-3" id="ap">imumolen christopher</td>
             <td class="col-3" id="ap2">bello bala maru</td>
-            <td class="col-2"><img src="pic/ap.jpeg" alt=""> <h3>ap</h3></td>
-            <td class="col-3" onclick="myChoice('ap', `${ap.innerHTML} <br> & <br> ${ap2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/ap.jpeg" alt="" />
+              <h3>ap</h3>
+            </td>
+            <td
+              class="col-3"
+              onclick="myChoice('ap', `${ap.innerHTML} <br> & <br> ${ap2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">2</th>
             <td id="aa">al-mustapha hamza</td>
             <td id="aa2">johnson emmanuel chukwuka</td>
-            <td class="col-2"><img src="pic/aa.jpeg" alt=""> <h3>aa</h3></td>
-             <td onclick="myChoice('aa', `${aa.innerHTML} <br> & <br> ${aa2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/aa.jpeg" alt="" />
+              <h3>aa</h3>
+            </td>
+            <td
+              onclick="myChoice('aa', `${aa.innerHTML} <br> & <br> ${aa2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">3</th>
             <td id="aac">sowore omoyele</td>
             <td id="aac2">magashi haruna garba</td>
-            <td class="col-2"><img src="pic/aac.jpeg" alt=""> <h3>aac</h3></td>
-             <td onclick="myChoice('aac', `${aac.innerHTML} <br> & <br> ${aac2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/aac.jpeg" alt="" />
+              <h3>aac</h3>
+            </td>
+            <td
+              onclick="myChoice('aac', `${aac.innerHTML} <br> & <br> ${aac2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">4</th>
             <td id="adc">kachikwu dumebi</td>
             <td id="adc2">buhari muhammed ahmedu</td>
-            <td class="col-2"><img src="pic/adc.jpeg" alt=""> <h3>adc</h3></td>
-             <td onclick="myChoice('adc', `${adc.innerHTML} <br> & <br> ${adc2.innerHTML}`)"><button class="btn btn-light w-100" id="fingers"><i class="fas fa-fingerprint"></i></button></td>
+            <td class="col-2">
+              <img src="pic/adc.jpeg" alt="" />
+              <h3>adc</h3>
+            </td>
+            <td
+              onclick="myChoice('adc', `${adc.innerHTML} <br> & <br> ${adc2.innerHTML}`)"
+            >
+              <button class="btn btn-light w-100" id="fingers">
+                <i class="fas fa-fingerprint"></i>
+              </button>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">5</th>
             <td id="adp">sani yabagi yusuf</td>
             <td id="adp2">udo okey okoro</td>
-            <td class="col-2"><img src="pic/adp.jpeg" alt=""> <h3>adp</h3></td>
-             <td onclick="myChoice('adp', `${adp.innerHTML} <br> & <br> ${adp2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/adp.jpeg" alt="" />
+              <h3>adp</h3>
+            </td>
+            <td
+              onclick="myChoice('adp', `${adp.innerHTML} <br> & <br> ${adp2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">6</th>
             <td id="apc">tinubu bola ahmed</td>
             <td id="apc2">shettima kashim</td>
-            <td class="col-2"><img src="pic/apc.png" alt=""> <h3>apc</h3></td>
-             <td onclick="myChoice('apc', `${apc.innerHTML} <br> & <br> ${apc2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/apc.png" alt="" />
+              <h3>apc</h3>
+            </td>
+            <td
+              onclick="myChoice('apc', `${apc.innerHTML} <br> & <br> ${apc2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">7</th>
             <td id="apga">umeadi peter nnanna</td>
             <td id="apga2">mohammed abdullahi</td>
-            <td class="col-2"><img src="pic/apga.png" alt=""> <h3>apga</h3></td>
-             <td onclick="myChoice('apga', `${apga.innerHTML} <br> & <br> ${apga2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/apga.png" alt="" />
+              <h3>apga</h3>
+            </td>
+            <td
+              onclick="myChoice('apga', `${apga.innerHTML} <br> & <br> ${apga2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">8</th>
             <td id="lp">obi peter gregory</td>
             <td id="lp2">baba ahmed yusuf datti</td>
-            <td class="col-2"><img src="pic/lp.png" alt=""> <h3>lp</h3></td>
-             <td onclick="myChoice('lp', `${lp.innerHTML} <br> & <br> ${lp2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/lp.png" alt="" />
+              <h3>lp</h3>
+            </td>
+            <td
+              onclick="myChoice('lp', `${lp.innerHTML} <br> & <br> ${lp2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">9</th>
             <td id="nnpp">musa rabiu kwankwaso</td>
             <td id="nnpp2">odiri idahosa isaac</td>
-            <td class="col-2"><img src="pic/nnpp.jpeg" alt=""> <h3>nnpp</h3></td>
-             <td onclick="myChoice('nnpp', `${nnpp.innerHTML} <br> & <br> ${nnpp2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/nnpp.jpeg" alt="" />
+              <h3>nnpp</h3>
+            </td>
+            <td
+              onclick="myChoice('nnpp', `${nnpp.innerHTML} <br> & <br> ${nnpp2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">10</th>
             <td id="pdp">abubakar atiku</td>
             <td id="pdp2">okowa arthur ifeanyi</td>
-            <td class="col-2"><img src="pic/pdp.png" alt=""> <h3>pdp</h3></td>
-             <td onclick="myChoice('pdp', `${pdp.innerHTML} <br> & <br> ${pdp2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/pdp.png" alt="" />
+              <h3>pdp</h3>
+            </td>
+            <td
+              onclick="myChoice('pdp', `${pdp.innerHTML} <br> & <br> ${pdp2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">11</th>
             <td id="sdp">adebayo adewole ebenezer</td>
             <td id="sdp2">buhari yusuf</td>
-            <td class="col-2"><img src="pic/sdp.png" alt=""> <h3>sdp</h3></td>
-             <td onclick="myChoice('sdp', `${sdp.innerHTML} <br> & <br> ${sdp2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/sdp.png" alt="" />
+              <h3>sdp</h3>
+            </td>
+            <td
+              onclick="myChoice('sdp', `${sdp.innerHTML} <br> & <br> ${sdp2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
           <tr class="w-100">
             <th scope="row" class="col-1">12</th>
             <td id="ypp">ado-ibrahim abdumalik</td>
             <td id="ypp2">enyinna michael kasrachi</td>
-            <td class="col-2"><img src="pic/ypp.png" alt="" id="im"> <h3>ypp</h3></td>
-             <td onclick="myChoice('ypp', `${ypp.innerHTML} <br> & <br> ${ypp2.innerHTML}`)" id="finger"><i class="fas fa-fingerprint"></i></td>
+            <td class="col-2">
+              <img src="pic/ypp.png" alt="" id="im" />
+              <h3>ypp</h3>
+            </td>
+            <td
+              onclick="myChoice('ypp', `${ypp.innerHTML} <br> & <br> ${ypp2.innerHTML}`)"
+              id="finger"
+            >
+              <i class="fas fa-fingerprint"></i>
+            </td>
           </tr>
         </tbody>
       </table>
       <div class="w-100 mt-3 d-flex justify-content-between pb-5">
-        <button class="btn btn-warning w-auto fw-bold fs-5 my-choice text-light" onclick="dispMyChoice()">My choice</button>
-      <button onclick="finish()" class="btn btn-primary w-25 fs-3 fw-bold finish-btn">Finish</button>
+        <button
+          class="btn btn-warning w-auto fw-bold fs-5 my-choice text-light"
+          onclick="dispMyChoice()"
+        >
+          My choice
+        </button>
+        <button
+          onclick="finish()"
+          class="btn btn-primary w-25 fs-3 fw-bold finish-btn"
+        >
+          Finish
+        </button>
       </div>
     </div>
 
-    <div class="h-100 position-fixed top-0 end-0 start-0  sweet-alert-modal p-3" id="sweetAlert">
-    </div>
-   <div id="disp"></div>
-   <div id="disp2"></div>
-   <div id="disp3"></div>
-   <div id="disp4"></div>
-   <div id="disp5"></div>
+    <div
+      class="h-100 position-fixed top-0 end-0 start-0 sweet-alert-modal p-3"
+      id="sweetAlert"
+    ></div>
+    <div id="disp"></div>
+    <div id="disp2"></div>
+    <div id="disp3"></div>
+    <div id="disp4"></div>
+    <div id="disp5"></div>
     <script src="e-voting.js"></script>
     <script src="bootstrap.js"></script>
   </body>
