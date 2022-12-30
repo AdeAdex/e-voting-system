@@ -27,7 +27,7 @@ body {
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10px 10px;
+  padding: 5px 10px;
 }
 
 .inec-logo,
@@ -76,7 +76,7 @@ body {
   background-size: 50px 70px;
   background-repeat: no-repeat;
   background-position: 5%;
-  height: 80px;
+  height: 70px;
   position: relative;
   text-transform: uppercase;
 }
@@ -147,14 +147,14 @@ body {
 .reg-container input {
   background-color: inherit;
   transition: 0.5s;
-  color: whitesmoke;
+  color: white;
 }
 .reg-container select {
   background-color: inherit;
   color: white;
 }
 .reg-container select:focus {
-  background-color: inherit;
+  background-color: gray;
   transition: 0.5s;
   color: whitesmoke;
 }
@@ -352,7 +352,11 @@ body {
   color: white;
 }
 
-.voting-page {
+.table-body:nth-child(even) {
+  background-color: rgba(2, 239, 2, 0.17);
+}
+
+.voting-page, .voting-page-gov {
   border: 8px solid green;
 }
 
@@ -383,10 +387,11 @@ td h3 {
   text-align: center;
 }
 
-#finger {
-  /* display: flex; */
-  /* background-color: red; */
-}
+
+/* #finger {
+  display: flex; 
+   background-color: red;
+} */
 
 .voting-page .fa-fingerprint {
   color: blue;
