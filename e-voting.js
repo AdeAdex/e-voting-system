@@ -12,6 +12,7 @@ function register() {
 function showTotal() {
   showTotalReg.innerHTML = `${votersDetails.length} `;
   // totalParty.innerHTML = `${}`
+  totalVoters.innerHTML = `${allPresidentialElectionResult.length}`;
 }
 
 var allNIN = [];
@@ -20,9 +21,6 @@ if (localStorage.localNIN) {
   allNIN = oldNIN;
 }
 function loadNIN() {
-  // if (nin.value == "") {
-  //   nin.style.borderColor = "red";
-  // } else {
   var votersNIN = {
     aAlphabet: 12345678910,
     bAlphabet: 12345678911,
@@ -33,55 +31,38 @@ function loadNIN() {
   };
   allNIN.splice(0, 1, votersNIN);
   localStorage.setItem("localNIN", JSON.stringify(allNIN));
-  // }
 }
 
-// function lookup() {
-//   for (let index = 0; index < allNIN.length; index++) {
-//     if (allNIN[index].aAlphabet == nin.value) {
-//       found = true;
-//       ninFeedback.innerHTML =  "NIN matched"
-//       break;
-//     } else {
-//       ninFeedback.style.display = "block"
-//       ninFeedback.innerHTML =  "NIN doesn't match"
-//     }
-//   }
-// }
-
-/*function TDate() {
-    var selectedDate = dateOfBirth.value;
-    var ToDate = new Date();
-    if (selectedDate < Date.now()) {
-        alert("The Date must be Bigger or Equal to today date")
-        return false;
+function lookup() {
+  for (let index = 0; index < allNIN.length; index++) {
+    if (allNIN[index].aAlphabet == nin.value) {
+      found = true;
+      ninFeedback.innerHTML = "NIN matched";
+      nin.style.borderColor = "green";
+      break;
+    } else {
+      ninFeedback.style.display = "block";
+      ninFeedback.innerHTML = "NIN doesn't match";
+      nin.style.borderColor = "red";
     }
+  }
+}
+
+/*function getAge() {
+    var UserDate = dateOfBirth.value;
+    var ToDate = new Date();
+    if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+          alert("The Date must be Bigger or Equal to today date");
+          return false;
+     }
     return true;
-} */
-
-// function getAge() {
-//     var enteredValue = $get('<%=ui_txtDOB.ClientID %>');;
-// var enteredAge = getAge(enteredValue.value);
-// if( enteredAge < 18 ) {
-//     alert("DOB not valid");
-//     enteredValue.focus();
-//     return false;
-// }
-// }
-
-// function TDate() {
-//     var UserDate = dateOfBirth.value;
-//     var ToDate = new Date();
-//     if (new Date(UserDate).getTime() <= ToDate.getTime()) {
-//           alert("The Date must be Bigger or Equal to today date");
-//           return false;
-//      }
-//     return true;
-// }
+}*/
 
 var votersDetails = [];
-if (localStorage.localVoters) {
-  var oldVoters = JSON.parse(localStorage.getItem("localVoters"));
+if (localStorage.registeredVotersPersonalDetails) {
+  var oldVoters = JSON.parse(
+    localStorage.getItem("registeredVotersPersonalDetails")
+  );
   votersDetails = oldVoters;
 }
 
@@ -106,7 +87,10 @@ function submitRegistration() {
       key: Math.floor(Math.random() * 1000000),
     };
     votersDetails.push(voters);
-    localStorage.setItem("localVoters", JSON.stringify(votersDetails));
+    localStorage.setItem(
+      "registeredVotersPersonalDetails",
+      JSON.stringify(votersDetails)
+    );
     showPass();
     showTotal();
   }
@@ -130,7 +114,10 @@ function showPass() {
     idn.innerHTML += `ID: ${votersDetails[index].id}`;
     keyNumber.innerHTML += `Key: ${votersDetails[index].key}`;
   }
-  localStorage.setItem("localVoters", JSON.stringify(votersDetails));
+  localStorage.setItem(
+    "registeredVotersPersonalDetails",
+    JSON.stringify(votersDetails)
+  );
 }
 
 function closeSaveNameModal() {
@@ -163,20 +150,20 @@ function signIn() {
     }
   }
 
-  // logic to check whether the User entered email is in allElectionResult array
-  let foundInAllElectionResult = false;
-  for (let user of allElectionResult) {
+  // logic to check whether the User entered email is in allPresidentialElectionResult array
+  let foundInAllPresidentialElectionResult = false;
+  for (let user of allPresidentialElectionResult) {
     if (user.myEmail === votersId) {
-      foundInAllElectionResult = true;
+      foundInAllPresidentialElectionResult = true;
       break;
     }
   }
 
-  if (found == true && foundInAllElectionResult) {
+  if (found == true && foundInAllPresidentialElectionResult) {
     warningAlert.innerHTML = `<i class="fas fa-warning" id="faWarning"></i> Operation Declined. <p>You cant vote twice, you've already voted.</p>`;
-  } else if (found == true && !foundInAllElectionResult) {
-    window.location.href = "e-voting-votingPage.html";
-  } else if (found == false && !foundInAllElectionResult) {
+  } else if (found == true && !foundInAllPresidentialElectionResult) {
+    window.location.href = "e-voting-contestantPage.html";
+  } else if (found == false && !foundInAllPresidentialElectionResult) {
     alert("re-type");
   } else {
     alert("Incorrect details, Kindly please check what you enter and re-type");
@@ -187,7 +174,7 @@ function fingerprint() {
   loading.innerHTML = `Fingerprint Scanner Reading Your finger`;
   let waitingTime = setInterval(function () {
     if (true) {
-      window.location.href = "e-voting-votingPage.html";
+      window.location.href = "e-voting-contestantPage.html";
     }
   }, 5000);
 }
@@ -235,8 +222,8 @@ function lan() {
 }
 
 var electionResult = [];
-if (localStorage.localResults) {
-  var oldResult = JSON.parse(localStorage.getItem("localResults"));
+if (localStorage.myVoteChoice) {
+  var oldResult = JSON.parse(localStorage.getItem("myVoteChoice"));
   electionResult = oldResult;
 }
 
@@ -247,12 +234,14 @@ function myChoice(para, para2) {
     // myElectionChoiceImg: picture1,
   };
   electionResult.splice(0, 1, myElectionResult);
-  localStorage.setItem("localResults", JSON.stringify(electionResult));
+  localStorage.setItem("myVoteChoice", JSON.stringify(electionResult));
   fingers.style.backgroundColor = "red";
 }
+
 myVoteResult = "";
 myVoltResultName = "";
 mySelf = "";
+
 function dispMyChoice() {
   let firstN;
   let lastN;
@@ -264,7 +253,7 @@ function dispMyChoice() {
     alert("You've not made any choice, Please select a choice first");
   } else {
     for (let index = 0; index < electionResult.length; index++) {
-      electionResult = JSON.parse(localStorage.getItem("localResults"));
+      electionResult = JSON.parse(localStorage.getItem("myVoteChoice"));
       sweetAlert.style.display = "flex";
       sweetAlert.innerHTML = `
     <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
@@ -296,39 +285,155 @@ function dispMyChoice() {
   }
 }
 
-var allElectionResult = [];
-if (localStorage.localResultsAll) {
-  var oldAllResult = JSON.parse(localStorage.getItem("localResultsAll"));
-  allElectionResult = oldAllResult;
+var myStateElectionResult = [];
+if (localStorage.myStateVoteChoice) {
+  var myStateOldResult = JSON.parse(localStorage.getItem("myStateVoteChoice"));
+  myStateElectionResult = myStateOldResult;
 }
+
+function myStateChoice(para, para2) {
+  var myStateElectionResultDetails = {
+    myStateElectionChoice: para,
+    myStateElectionChoiceName: para2,
+    // myElectionChoiceImg: picture1,
+  };
+  myStateElectionResult.splice(0, 1, myStateElectionResultDetails);
+  localStorage.setItem(
+    "myStateVoteChoice",
+    JSON.stringify(myStateElectionResult)
+  );
+  fingers.style.backgroundColor = "red";
+}
+
+myOwnVoteResult = "";
+myOwnVoltResultName = "";
+myOwnSelf = "";
+
+function dispMyStateChoice() {
+  let firstN;
+  let lastN;
+  for (let index = 0; index < votersDetails.length; index++) {
+    firstN = `${votersDetails[index].fname}`;
+    lastN = `${votersDetails[index].lname}`;
+  }
+  if (myStateElectionResult.length == 0) {
+    alert("You've not made any choice, Please select a choice first");
+  } else {
+    for (let index = 0; index < myStateElectionResult.length; index++) {
+      myStateElectionResult = JSON.parse(
+        localStorage.getItem("myStateVoteChoice")
+      );
+      sweetAlert.style.display = "flex";
+      sweetAlert.innerHTML = `
+    <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
+          <div class=" sweet-alert d-flex justify-content-center"><i class="fas fa-check m-auto"></i></div>
+          <div class="w-100">
+            <h3 class="sweet-alert-h3 text-center"><p>Thank you for voting</p>  <strong id="myOwnSelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Voting successful, kindly please remember to print or screenshot your Volting result.</p></h3>
+          </div>
+          <div class="m-2 text-center fw-bold text-uppercase">
+          <table class="table w-100 fs-6 ">
+            <tr>
+              <th>Name</th>
+              <th>Party logo</th>
+              <th>Party Name</th>
+            </tr>
+            <tr>
+              <td id="myOwnVoltResultName">${myStateElectionResult[index].myStateElectionChoiceName}</td>
+              <td></td>
+              <td id="myOwnVoltResult" class="">${myStateElectionResult[index].myStateElectionChoice}</td>
+            </tr>
+          </table> 
+          </div>
+          <footer class="w-100">
+            <button class="btn btn-success okay-btn" onclick="closeSweetAlert()"> Okay</button>
+            <button class="btn btn-primary fs-4 print-btn" onclick="window.print();">Print</button>
+          </footer>
+        </div>
+    `;
+    }
+  }
+}
+
+function next() {}
 
 function finish() {
   let yes = confirm(
     `Are you sure you want to finish voting? \nNote that once you click 'OK' button, you cant make any choice again and you can't vote again. Please feel free to make your choice before clicking 'OK' button  \nYou can click 'Cancel' button here and click 'My choice' button to view your vote choice \nThanks`
   );
   if (yes) {
-    for (let index = 0; index < votersDetails.length; index++) {
-      disp.innerHTML = `${votersDetails[index].fname}`;
-      disp3.innerHTML = `${votersDetails[index].state}`;
-      disp4.innerHTML = `${votersDetails[index].email}`;
-    }
-    for (let index = 0; index < electionResult.length; index++) {
-      disp5.innerHTML = `${electionResult[index].myElectionChoice}`;
-    }
-    var allVotersElectionResult = {
-      name: disp.innerHTML,
-      myState: disp3.innerHTML,
-      myEmail: disp4.innerHTML,
-      myLatestChoice: disp5.innerHTML,
-    };
-    electionResult.splice(0);
-    localStorage.setItem("localResults", JSON.stringify(electionResult));
-
-    allElectionResult.push(allVotersElectionResult);
-    localStorage.setItem("localResultsAll", JSON.stringify(allElectionResult));
-    window.location.href = "index.html";
+    storePresidentialResult();
+    storeGovernorshipResult();
   } else {
   }
+}
+
+var allPresidentialElectionResult = [];
+if (localStorage.presidentialResults) {
+  var oldAllResult = JSON.parse(localStorage.getItem("presidentialResults"));
+  allPresidentialElectionResult = oldAllResult;
+}
+
+function storePresidentialResult() {
+  let myName, myState, myEmail, myChoice;
+  for (let index = 0; index < votersDetails.length; index++) {
+    myName = `${votersDetails[index].fname}`;
+    myState = `${votersDetails[index].state}`;
+    myEmail = `${votersDetails[index].email}`;
+  }
+  for (let index = 0; index < electionResult.length; index++) {
+    myChoice = `${electionResult[index].myElectionChoice}`;
+  }
+  var allVotersElectionResult = {
+    name: myName,
+    myState: myState,
+    myEmail: myEmail,
+    myLatestChoice: myChoice,
+  };
+  electionResult.splice(0);
+  localStorage.setItem("myVoteChoice", JSON.stringify(electionResult));
+
+  allPresidentialElectionResult.push(allVotersElectionResult);
+  localStorage.setItem(
+    "presidentialResults",
+    JSON.stringify(allPresidentialElectionResult)
+  );
+  window.location.href = "e-voting-homePage.html";
+}
+
+var stateGovElection = [];
+if (localStorage.myStateGovernorshipResult) {
+  var oldGov = JSON.parse(localStorage.getItem("myStateGovernorshipResult"));
+  stateGovElection = oldGov;
+}
+
+function storeGovernorshipResult() {
+  let myName, myState, myEmail, myChoice;
+  for (let index = 0; index < votersDetails.length; index++) {
+    myName = `${votersDetails[index].fname}`;
+    myState = `${votersDetails[index].state}`;
+    myEmail = `${votersDetails[index].email}`;
+  }
+  for (let index = 0; index < myStateElectionResult.length; index++) {
+    myChoice = `${myStateElectionResult[index].myStateElectionChoice}`;
+  }
+  var allVotersElectionResult = {
+    name: myName,
+    myState: myState,
+    myEmail: myEmail,
+    myStateLatestChoice: myChoice,
+  };
+  myStateElectionResult.splice(0);
+  localStorage.setItem(
+    "myStateVoteChoice",
+    JSON.stringify(myStateElectionResult)
+  );
+
+  stateGovElection.push(allVotersElectionResult);
+  localStorage.setItem(
+    "myStateGovernorshipResult",
+    JSON.stringify(stateGovElection)
+  );
+  window.location.href = "e-voting-homePage.html";
 }
 
 var inecChairman = [];
@@ -349,6 +454,7 @@ function chairmanReg() {
     };
     inecChairman.push(inecBoss);
     localStorage.setItem("InecChairmanDetails", JSON.stringify(inecChairman));
+    window.location.href = "inec-chairman-loginPage.html";
   }
 }
 
@@ -367,31 +473,453 @@ function chairmanLogin() {
   }
 
   if (found == true) {
-    window.location.href = "final.html";
+    window.location.href = "toFinal.html";
   } else {
     alert("Incorrect details, Kindly please check what you enter and re-type");
   }
 }
 
-(() => {
-  "use strict";
+function howPeopleVote(para) {
+  para;
+}
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll(".needs-validation");
+function toPresidentialVotingPage() {
+  window.location.href = "e-voting-presidentialVotingPage.html";
+}
 
-  // Loop over them and prevent submission
-  Array.from(forms).forEach((form) => {
-    form.addEventListener(
-      "submit",
-      (event) => {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
+function toGovernorshipVotingPage() {
+  window.location.href = "e-voting-governorshipVotingPage.html";
+  // generalDiv.innerHTML = "";
+  stateGov();
+}
 
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
-})();
+function stateGov() {
+  generalDiv.innerHTML = "";
+  for (let index = 0; index < votersDetails.length; index++) {
+    if (votersDetails[index].state == "oyo") {
+      generalDiv.innerHTML = `
+      <table
+          class="table table-hover table-bordered border-success table-responsive w-100 border-5 voting-page-gov"
+          id="oyoGovElection"
+        >
+          <caption-top
+            class="text-uppercase d-flex justify-content-center pt-5 pb-3 bg-success text-white captin-caption"
+            >The list of election contestant in oyo state, their party logo &
+            names and the fingerprint</caption-top
+          >
+          <thead class="text-center">
+            <tr class="table-active w-100">
+              <th scope="row" class="col-1">#</th>
+              <th scope="row" colspan="2" class="col-6">names</th>
+              <th scope="row" class="col-2">party logo</th>
+              <th scope="row" class="col-3">fingerprint</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="w-100 p-4">
+              <th scope="row" class="col-1">1</th>
+              <td class="col-3" id="ap">adelabu adebayo adekola</td>
+              <td class="col-3" id="ap2">ayandele abiodun ayanfemi</td>
+              <td class="col-2">
+                <img src="pic/ap.jpeg" alt="" />
+                <h3>ap</h3>
+              </td>
+              <td
+                class="col-3"
+                onclick="myStateChoice('ap',)"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">2</th>
+              <td id="aa">ajekigbe lateef olaniyi</td>
+              <td id="aa2">fawole ajiboye taofeek</td>
+              <td class="col-2">
+                <img src="pic/aa.jpeg" alt="" />
+                <h3>aa</h3>
+              </td>
+              <td
+                onclick="myStateChoice('aa', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">3</th>
+              <td id="aac">okedara mojeed</td>
+              <td id="aac2">oladimeji idowu ayomide</td>
+              <td class="col-2">
+                <img src="pic/aac.jpeg" alt="" />
+                <h3>aac</h3>
+              </td>
+              <td
+                onclick="myStateChoice('aac', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">4</th>
+              <td id="adc">ajadi bamidele ganiyu</td>
+              <td id="adc2">oyewole oyatayo emmanuel</td>
+              <td class="col-2">
+                <img src="pic/adc.jpeg" alt="" />
+                <h3>adc</h3>
+              </td>
+              <td
+                onclick="myStateChoice('adc', )"
+              >
+                <button class="btn btn-light w-100" id="fingers">
+                  <i class="fas fa-fingerprint"></i>
+                </button>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">5</th>
+              <td id="adp">yusuf akim adebola</td>
+              <td id="adp2">daniels adigun modupe</td>
+              <td class="col-2">
+                <img src="pic/adp.jpeg" alt="" />
+                <h3>adp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('adp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">6</th>
+              <td id="apc">folarin kolawole teslim</td>
+              <td id="apc2">okunlola david oluwafemi</td>
+              <td class="col-2">
+                <img src="pic/apc.png" alt="" />
+                <h3>apc</h3>
+              </td>
+              <td
+                onclick="myStateChoice('apc', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">7</th>
+              <td id="apga">adeshina adewale excel</td>
+              <td id="apga2">oladepo john oladejo</td>
+              <td class="col-2">
+                <img src="pic/apga.png" alt="" />
+                <h3>apga</h3>
+              </td>
+              <td
+                onclick="myStateChoice('apga', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">8</th>
+              <td id="lp">akinwale tawfiq tayo</td>
+              <td id="lp2">akanji esther adebimpe</td>
+              <td class="col-2">
+                <img src="pic/lp.png" alt="" />
+                <h3>lp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('lp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">9</th>
+              <td id="nnpp">popoola olukayode joshua</td>
+              <td id="nnpp2">adesope modinat atinuke</td>
+              <td class="col-2">
+                <img src="pic/nnpp.jpeg" alt="" />
+                <h3>nnpp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('nnpp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">10</th>
+              <td id="pdp">makinde oluseyi abiodun</td>
+              <td id="pdp2">lawal adebayo adeleke</td>
+              <td class="col-2">
+                <img src="pic/pdp.png" alt="" />
+                <h3>pdp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('pdp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">11</th>
+              <td id="sdp">lana michael</td>
+              <td id="sdp2">aloyinlapa abdur rahman</td>
+              <td class="col-2">
+                <img src="pic/sdp.png" alt="" />
+                <h3>sdp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('sdp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">12</th>
+              <td id="ypp">euba aduragbemi</td>
+              <td id="ypp2">ojewole jeleel</td>
+              <td class="col-2">
+                <img src="pic/ypp.png" alt="" id="im" />
+                <h3>ypp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('ypp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+      
+      `;
+    } else if (votersDetails[index].state == "lagos") {
+      generalDiv.innerHTML = `
+      <table
+          class="table table-hover table-bordered border-success table-responsive w-100 border-5 voting-page-gov"
+          id="oyoGovElection"
+        >
+          <caption-top
+            class="text-uppercase d-flex justify-content-center pt-5 pb-3 bg-success text-white captin-caption"
+            >The list of election contestant in lagos state, their party logo &
+            names and the fingerprint</caption-top
+          >
+          <thead class="text-center">
+            <tr class="table-active w-100">
+              <th scope="row" class="col-1">#</th>
+              <th scope="row" colspan="2" class="col-6">names</th>
+              <th scope="row" class="col-2">party logo</th>
+              <th scope="row" class="col-3">fingerprint</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="w-100 p-4">
+              <th scope="row" class="col-1">1</th>
+              <td class="col-3" id="ap">dickson hakeem olaogun</td>
+              <td class="col-3" id="ap2">mate caroline emimie</td>
+              <td class="col-2">
+                <img src="pic/ap.jpeg" alt="" />
+                <h3>ap</h3>
+              </td>
+              <td
+                class="col-3"
+                onclick="myStateChoice('ap',)"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">2</th>
+              <td id="aa">balogun tope abdulrazaq</td>
+              <td id="aa2">salako oluwatosin mautin</td>
+              <td class="col-2">
+                <img src="pic/aa.jpeg" alt="" />
+                <h3>aa</h3>
+              </td>
+              <td
+                onclick="myStateChoice('aa', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">3</th>
+              <td id="aac">olayiwola akeem olaide</td>
+              <td id="aac2">eze benneth segun</td>
+              <td class="col-2">
+                <img src="pic/aac.jpeg" alt="" />
+                <h3>aac</h3>
+              </td>
+              <td
+                onclick="myStateChoice('aac', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">4</th>
+              <td id="adc">doherty olufunso adeshina</td>
+              <td id="adc2">giwa amu rosemary</td>
+              <td class="col-2">
+                <img src="pic/adc.jpeg" alt="" />
+                <h3>adc</h3>
+              </td>
+              <td
+                onclick="myStateChoice('adc', )"
+              >
+                <button class="btn btn-light w-100" id="fingers">
+                  <i class="fas fa-fingerprint"></i>
+                </button>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">5</th>
+              <td id="adp">bamidele ishola</td>
+              <td id="adp2">adewusi omobola tawakalit</td>
+              <td class="col-2">
+                <img src="pic/adp.jpeg" alt="" />
+                <h3>adp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('adp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">6</th>
+              <td id="apc">sanwo-olu babajide olusola</td>
+              <td id="apc2">hamzat kadri obafemi</td>
+              <td class="col-2">
+                <img src="pic/apc.png" alt="" />
+                <h3>apc</h3>
+              </td>
+              <td
+                onclick="myStateChoice('apc', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">8</th>
+              <td id="lp">rhodes-vivour gbadebo patrick</td>
+              <td id="lp2">oyefusi abiodun adetola</td>
+              <td class="col-2">
+                <img src="pic/lp.png" alt="" />
+                <h3>lp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('lp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">9</th>
+              <td id="nnpp">jim-kamal olarewaju olalekan</td>
+              <td id="nnpp2">abiola faosa koya</td>
+              <td class="col-2">
+                <img src="pic/nnpp.jpeg" alt="" />
+                <h3>nnpp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('nnpp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">10</th>
+              <td id="pdp">adediran azeez olajide</td>
+              <td id="pdp2">akindele ayotunde olufunke</td>
+              <td class="col-2">
+                <img src="pic/pdp.png" alt="" />
+                <h3>pdp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('pdp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">11</th>
+              <td id="sdp">uthman olakunle taofeek</td>
+              <td id="sdp2">animasahun morenikeji abeni</td>
+              <td class="col-2">
+                <img src="pic/sdp.png" alt="" />
+                <h3>sdp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('sdp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+            <tr class="w-100">
+              <th scope="row" class="col-1">12</th>
+              <td id="ypp">ajayi wasiu adebayo</td>
+              <td id="ypp2">shodoke temitayo</td>
+              <td class="col-2">
+                <img src="pic/ypp.png" alt="" id="im" />
+                <h3>ypp</h3>
+              </td>
+              <td
+                onclick="myStateChoice('ypp', )"
+                id="finger"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+    } else if ((votersDetails[index].state == "osun", "ondo", "kwara")) {
+      generalDiv.innerHTML = `
+      No Governorship election in the state you select, kindly move on to another election type
+      `;
+    }
+  }
+}
+
+// (() => {
+//   "use strict";
+
+//   // Fetch all the forms we want to apply custom Bootstrap validation styles to
+//   const forms = document.querySelectorAll(".needs-validation");
+
+//   // Loop over them and prevent submission
+//   Array.from(forms).forEach((form) => {
+//     form.addEventListener(
+//       "submit",
+//       (event) => {
+//         if (!form.checkValidity()) {
+//           event.preventDefault();
+//           event.stopPropagation();
+//         }
+
+//         form.classList.add("was-validated");
+//       },
+//       false
+//     );
+//   });
+// })();
