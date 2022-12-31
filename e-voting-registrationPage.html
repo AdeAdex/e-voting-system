@@ -21,21 +21,21 @@
             <img
               src="pic/NIN-app.jpeg"
               class="d-block w-100 carousel-big-screen"
-              alt="..."
+              alt="NIN "
             />
           </div>
           <div class="carousel-item h-100">
             <img
               src="pic/ima.jpeg"
               class="d-block w-50 m-auto carousel-img carousel-big-screen"
-              alt="..."
+              alt="+18"
             />
           </div>
           <div class="carousel-item h-100">
             <img
               src="pic/NIN-lady.png"
               class="d-block w-100 carousel-big-screen"
-              alt="..."
+              alt=""
             />
           </div>
         </div>
@@ -59,88 +59,88 @@
         </button>
       </div>
       <!-- <form class="row g-3 needs-validation" novalidate id="fm"> -->
-        <div class="reg-container">
-          <h1
-            class="w-100 text-center fs-4 text-uppercase position-sticky top-0 b-0 pt-3 reg-h1"
+      <div class="reg-container">
+        <h1
+          class="w-100 text-center fs-4 text-uppercase position-sticky top-0 b-0 pt-3 reg-h1"
+        >
+          voters registration form
+        </h1>
+        <div class="file-btn mb-5 col-md-8 m-auto reg-form">
+          <div class="file2 w-100">
+            <img src="pic/avatar.png" id="myFrame" />
+            <input type="file" onchange="preview()" id="avatar" />
+          </div>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom01" class="form-label mt-2"
+            >First name</label
           >
-            voters registration form
-          </h1>
-          <div class="file-btn mb-5 col-md-8 m-auto reg-form">
-            <div class="file2 w-100">
-              <img src="pic/avatar.png" id="myFrame" />
-              <input type="file" onchange="preview()" id="avatar" />
-            </div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom01" class="form-label mt-2"
-              >First name</label
-            >
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            value=""
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom02" class="form-label mt-2"
+            >Last name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            value=""
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustomUsername" class="form-label mt-2"
+            >National Identification Number</label
+          >
+          <div class="input-group has-validation d-grid">
+            <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
             <input
-              type="text"
-              class="form-control"
-              id="firstName"
-              value=""
+              type="number"
+              class="form-control w-100"
+              id="nin"
+              aria-describedby="inputGroupPrepend"
               required
+              onkeyup="lookup()"
             />
-            <div class="valid-feedback">Looks good!</div>
+            <div id="ninFeedback"></div>
+            <div class="invalid-feedback">Please enter your correct NIN .</div>
           </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom02" class="form-label mt-2"
-              >Last name</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="lastName"
-              value=""
-              required
-            />
-            <div class="valid-feedback">Looks good!</div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustomUsername" class="form-label mt-2"
-              >National Identification Number</label
-            >
-            <div class="input-group has-validation d-grid">
-              <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-              <input
-                type="number"
-                class="form-control w-100"
-                id="nin"
-                aria-describedby="inputGroupPrepend"
-                required
-                onkeyup="lookup()"
-              />
-              <div id="ninFeedback"></div>
-              <div class="invalid-feedback">
-                Please enter your correct NIN .
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom04" class="form-label mt-2"
-              >Country</label
-            >
-            <select class="form-select" id="countryOption" required>
-              <option selected disabled value="">Choose...</option>
-              <option value="Nigeria">Nigeria</option>
-              <option value="USA">United State of America</option>
-              <option value="UK">United Kingdom</option>
-              <option value="Canada">Canada</option>
-              <option value="Germany">Germany</option>
-              <option value="Australia">Australia</option>
-              <option value="France">France</option>
-              <option value="Switzerland">Switzerland</option>
-              <option value="Japan">Japan</option>
-            </select>
-            <div class="invalid-feedback">Please select a valid country.</div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom04" class="form-label mt-2"
-              >State</label
-            >
-            <select class="form-select" id="stateOption"
-            onchange="stateGov()" required>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom04" class="form-label mt-2"
+            >Country</label
+          >
+          <select class="form-select" id="countryOption" required>
+            <option selected disabled value="">Choose...</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="USA">United State of America</option>
+            <option value="UK">United Kingdom</option>
+            <option value="Canada">Canada</option>
+            <option value="Germany">Germany</option>
+            <option value="Australia">Australia</option>
+            <option value="France">France</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Japan">Japan</option>
+          </select>
+          <div class="invalid-feedback">Please select a valid country.</div>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom04" class="form-label mt-2">State</label>
+          <select
+            class="form-select"
+            id="stateOption"
+            onchange="stateGov()"
+            required
+          >
             <option value="oyo">oyo state</option>
             <option value="osun">osun state</option>
             <option value="lagos">lagos state</option>
@@ -156,106 +156,102 @@
             <option value="kano">kano state</option>
             <option value="kaduna">kaduna state</option>
             <option value="benue">benue state</option>
-            </select>
-            <div class="invalid-feedback">Please select a valid state.</div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom05" class="form-label mt-2"
-              >Email</label
-            >
-            <input type="email" class="form-control" id="email" required />
-            <div class="invalid-feedback">Please provide a valid email.</div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom05" class="form-label mt-2"
-              >Phone Number</label
-            >
-            <input type="tel" class="form-control" id="phoneNumber" required />
-            <div class="invalid-feedback">
-              Please provide a valid phone number.
-            </div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom05" class="form-label mt-2"
-              >Date of Birth</label
-            >
-            <input
-              type="date"
-              class="form-control"
-              id="dateOfBirth"
-              onchange="getAge()"
-              required
-            />
-            <div class="invalid-feedback">
-              Please provide a valid date of birth.
-            </div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom05" class="form-label mt-2"
-              >Gender</label
-            >
-            <div class="col3">
-              <div class="options-div">
-                <label for="male" class="gender-option">
-                  Male:
-                  <input
-                    type="radio"
-                    name="genderinpt"
-                    value="Male"
-                    id="genderOption"
-                    class="form-check-input"
-                    name="radio-stacked"
-                    required
-                  />
-                </label>
-                <label for="female" class="gender-option">
-                  Female:
-                  <input
-                    type="radio"
-                    name="genderinpt"
-                    value="Female"
-                    id="genderOption"
-                  />
-                </label>
-              </div>
-            </div>
-            <div class="invalid-feedback">Please select a valid gender.</div>
-          </div>
-          <div class="col-md-8 m-auto reg-form">
-            <label for="validationCustom05" class="form-label mt-2"
-              >Password</label
-            >
-            <input type="password" class="form-control" id="pass" required />
-            <div class="invalid-feedback">Please provide a valid password.</div>
-          </div>
-          <div class="col-md-8 m-auto reg-form" id="signUpCheck">
-            <div class="form-check mt-2">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="invalidCheck"
-                required
-              />
-              <label class="form-check-label" for="invalidCheck">
-                Agree to terms and conditions
-              </label>
-              <div class="invalid-feedback">
-                You must agree before submitting.
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8 m-auto d-flex mt-4 reg-form">
-            <button
-              class="btn btn-primary col-10 m-auto"
-              type="submit"
-              id="submitReg"
-              onclick="submitRegistration()"
-            >
-              Create Account
-            </button>
+          </select>
+          <div class="invalid-feedback">Please select a valid state.</div>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom05" class="form-label mt-2">Email</label>
+          <input type="email" class="form-control" id="email" required />
+          <div class="invalid-feedback">Please provide a valid email.</div>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom05" class="form-label mt-2"
+            >Phone Number</label
+          >
+          <input type="tel" class="form-control" id="phoneNumber" required />
+          <div class="invalid-feedback">
+            Please provide a valid phone number.
           </div>
         </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom05" class="form-label mt-2"
+            >Date of Birth</label
+          >
+          <input
+            type="date"
+            class="form-control"
+            id="dateOfBirth"
+            onchange="getAge()"
+            required
+          />
+          <div class="invalid-feedback">
+            Please provide a valid date of birth.
+          </div>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom05" class="form-label mt-2">Gender</label>
+          <div class="col3">
+            <div class="options-div">
+              <label for="male" class="gender-option">
+                Male:
+                <input
+                  type="radio"
+                  name="genderinpt"
+                  value="Male"
+                  id="genderOption"
+                  class="form-check-input"
+                  name="radio-stacked"
+                  required
+                />
+              </label>
+              <label for="female" class="gender-option">
+                Female:
+                <input
+                  type="radio"
+                  name="genderinpt"
+                  value="Female"
+                  id="genderOption"
+                />
+              </label>
+            </div>
+          </div>
+          <div class="invalid-feedback">Please select a valid gender.</div>
+        </div>
+        <div class="col-md-8 m-auto reg-form">
+          <label for="validationCustom05" class="form-label mt-2"
+            >Password</label
+          >
+          <input type="password" class="form-control" id="pass" required />
+          <div class="invalid-feedback">Please provide a valid password.</div>
+        </div>
+        <div class="col-md-8 m-auto reg-form" id="signUpCheck">
+          <div class="form-check mt-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="invalidCheck"
+              required
+            />
+            <label class="form-check-label" for="invalidCheck">
+              Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 m-auto d-flex mt-4 reg-form">
+          <button
+            class="btn btn-primary col-10 m-auto"
+            type="submit"
+            id="submitReg"
+            onclick="submitRegistration()"
+          >
+            Create Account
+          </button>
+        </div>
+      </div>
       <!-- </form> -->
     </div>
 
@@ -266,12 +262,12 @@
       >
         <div class="w-100 bg-light h-70 mt-auto mb-auto p-2 position-relative">
           <div class="d-flex justify-content-end position-relative">
-            <button
+            <!-- <button
               class="rules-modal-close border-danger border"
               onclick="closeShowPass()"
             >
               &times;
-            </button>
+            </button> -->
           </div>
           <div
             class="p-3 d-flex flex-column justify-content-center mt-4 colo text-primary"
