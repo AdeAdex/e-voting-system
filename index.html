@@ -22,11 +22,70 @@
         </div>
         <div class="p-3 information mb-3">
           <h5>Register Voters In Adex :</h5>
-          <div class="fs-1" id="showTotalReg"></div>
+          <div class="fs-3" id="showTotalReg"></div>
           <h5>Register Political Party :</h5>
-          <div class="fs-1" id="totalParty">12</div>
-          <h5>Total Voters :</h5>
-          <div class="fs-1" id="totalVoters"></div>
+          <div class="fs-3" id="totalParty">12</div>
+          <h5>Total Votes :</h5>
+          <div class="d-flex w-50 scrolit">
+            <div
+              id="totalVoteCarousel"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active text-capitalize">
+                  <h6>presidential</h6>
+                  <div class="fs-3 w-50" id="totalPresidentialVolts"></div>
+                </div>
+                <div class="carousel-item h-100 text-capitalize">
+                  <h6>governorship</h6>
+                  <div class="fs-3 w-50" id="totalGovernorshipVolts"></div>
+                </div>
+                <div class="carousel-item h-100 text-capitalize">
+                  <h6>senatorial</h6>
+                  <div class="fs-3 w-50" id="totalSenatorialVolts">
+                    unavailable
+                  </div>
+                </div>
+                <div class="carousel-item h-100 text-capitalize">
+                  <h6>house of representative</h6>
+                  <div class="fs-3 w-50" id="totalSenatorialVolts">
+                    unavailable
+                  </div>
+                </div>
+                <div class="carousel-item h-100 text-capitalize">
+                  <h6>house of Assembly</h6>
+                  <div class="fs-3 w-50" id="totalSenatorialVolts">
+                    unavailable
+                  </div>
+                </div>
+              </div>
+              <!-- <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button> -->
+            </div>
+          </div>
         </div>
         <div class="screen-container">
           <div class="language-container">
@@ -42,7 +101,8 @@
               <option value="english">English</option>
               <option value="yoruba">Yoruba</option>
               <option value="igbo">Igbo</option>
-              <option value="hausa">Hausa</option> <div></div>
+              <option value="hausa">Hausa</option>
+              <div></div>
               <option value="">Ibibio</option>
               <option value="">Tiv</option>
             </select>
@@ -150,13 +210,13 @@
               Click on the election type you wish to vote first and in the next
               window, where election contestant names, party logo and name
               appears, there's a voting button at the right side of every
-              contestant, click on any of your choice and your vote is
-              recorded automatically click next to vote for the next election
-              type and once you are done, click on the finish button and all
-              your choice will be made available to you. Click on print to have
-              a copy of the vote and you can end the vote for the next voter.
-              Thanks Note: Once you've vote, you can't come back to vote again.
-              Any such steps will be treated as illegal.
+              contestant, click on any of your choice and your vote is recorded
+              automatically click next to vote for the next election type and
+              once you are done, click on the finish button and all your choice
+              will be made available to you. Click on print to have a copy of
+              the vote and you can end the vote for the next voter. Thanks Note:
+              Once you've vote, you can't come back to vote again. Any such
+              steps will be treated as illegal.
             </div>
           </div>
         </div>
