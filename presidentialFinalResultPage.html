@@ -12,9 +12,7 @@
   <body onload="presidentialResult()">
     <div id="dispre">
       <div class="language-container">
-        <label for="validationCustom04" class="form-label"
-          >Sort by :</label
-        >
+        <label for="validationCustom04" class="form-label">Sort by :</label>
         <select
           class="form-select form-select-lg w-50"
           aria-label=".form-select-lg example"
@@ -24,7 +22,8 @@
           <option value="state">State</option>
           <option value="party">Party</option>
           <option value="lga">LGA</option>
-          <option value="names">Names</option> <div></div>
+          <option value="names">Names</option>
+          <div></div>
         </select>
       </div>
       <table
@@ -37,7 +36,7 @@
           <p>this is how people's voted</p></caption-top
         >
         <thead class="text-bg-success text-center border">
-          <tr>
+          <tr class="tr-cursor">
             <th scope="col" onclick="sortTable(1)">#</th>
             <th scope="col" onclick="sortTable(0)">Names</th>
             <th scope="col" onclick="sortTable(1)">State</th>
