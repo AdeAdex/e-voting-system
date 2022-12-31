@@ -11,8 +11,8 @@ function register() {
 
 function showTotal() {
   showTotalReg.innerHTML = `${votersDetails.length} `;
-  // totalParty.innerHTML = `${}`
-  totalVoters.innerHTML = `${allPresidentialElectionResult.length}`;
+  totalPresidentialVolts.innerHTML = `${allPresidentialElectionResult.length}`;
+  totalGovernorshipVolts.innerHTML = `${stateGovElection.length}`;
 }
 
 var allNIN = [];
@@ -142,7 +142,8 @@ function signIn() {
   var found = false;
   for (let index = 0; index < votersDetails.length; index++) {
     if (
-      (votersDetails[index].id || votersDetails[index].email == votersId) &&
+      (votersDetails[index].id == votersId ||
+        votersDetails[index].email == votersId) &&
       votersDetails[index].key == votersKey
     ) {
       found = true;
@@ -163,10 +164,11 @@ function signIn() {
     warningAlert.innerHTML = `<i class="fas fa-warning" id="faWarning"></i> Operation Declined. <p>You cant vote twice, you've already voted.</p>`;
   } else if (found == true && !foundInAllPresidentialElectionResult) {
     window.location.href = "e-voting-contestantPage.html";
+    warningAlert.innerHTML = ``;
   } else if (found == false && !foundInAllPresidentialElectionResult) {
-    alert("re-type");
+    warningAlert.innerHTML = `<i class="fas fa-warning" id="faWarning"></i>Failed Operation. <p>You've not register before, kindly register and try again.</p>`;
   } else {
-    alert("Incorrect details, Kindly please check what you enter and re-type");
+    warningAlert.innerHTML = `<i class="fas fa-warning" id="faWarning"></i>Failed Operation. <p>Incorrect details, Kindly please check what you enter and try again.</p>`;
   }
 }
 
@@ -174,32 +176,33 @@ function fingerprint() {
   loading.innerHTML = `Fingerprint Scanner Reading Your finger`;
   let waitingTime = setInterval(function () {
     if (true) {
-      window.location.href = "e-voting-contestantPage.html";
+      loading.innerHTML = "fingerprint move too faster. Try again";
+      //window.location.href = "e-voting-contestantPage.html";
     }
   }, 5000);
 }
 
-/*function signIn() {
-  var votersId = loginId.value;
-  var votersKey = pass.value;
-  var found = false;
-  for (let index = 0; index < votersDetails.length; index++) {
-    if (
-      (votersDetails[index].id || votersDetails[index].email == votersId) &&
-      votersDetails[index].key == votersKey
-    ) {
-      found = true;
-      break;
-    }
-  }
+// function signIn() {
+//   var votersId = loginId.value;
+//   var votersKey = pass.value;
+//   var found = false;
+//   for (let index = 0; index < votersDetails.length; index++) {
+//     if (
+//       (votersDetails[index].id == votersId || votersDetails[index].email == votersId) &&
+//       votersDetails[index].key == votersKey
+//     ) {
+//       found = true;
+//       break;
+//     }
+//   }
 
-  if (found == true) {
-    window.location.href = "e-voting-votingPage.html";
-  } else {
-  alert("Incorrect details, Kindly please check what you enter and re-type");
-}
+//   if (found == true) {
+//     window.location.href = "e-voting-contestantPage.html";
+//   } else {
+//   alert("Incorrect details, Kindly please check what you enter and re-type");
+// }
 
-}*/
+// }
 
 function lan() {
   if (formSelect.value == "yoruba") {
@@ -259,7 +262,7 @@ function dispMyChoice() {
     <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
           <div class=" sweet-alert d-flex justify-content-center"><i class="fas fa-check m-auto"></i></div>
           <div class="w-100">
-            <h3 class="sweet-alert-h3 text-center"><p>Thank you for voting</p>  <strong id="mySelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Voting successful, kindly please remember to print or screenshot your Volting result.</p></h3>
+            <h3 class="sweet-alert-h3 text-center"><p>Thank you for voting</p>  <strong id="mySelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Voting successful, remember to print or screenshot your volt's result.</p></h3>
           </div>
           <div class="m-2 text-center fw-bold text-uppercase">
           <table class="table w-100 fs-6 ">
@@ -328,7 +331,7 @@ function dispMyStateChoice() {
     <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
           <div class=" sweet-alert d-flex justify-content-center"><i class="fas fa-check m-auto"></i></div>
           <div class="w-100">
-            <h3 class="sweet-alert-h3 text-center"><p>Thank you for voting</p>  <strong id="myOwnSelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Voting successful, kindly please remember to print or screenshot your Volting result.</p></h3>
+            <h3 class="sweet-alert-h3 text-center"><p>Thank you for voting</p>  <strong id="myOwnSelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Voting successful, remember to print or screenshot your volt's result.</p></h3>
           </div>
           <div class="m-2 text-center fw-bold text-uppercase">
           <table class="table w-100 fs-6 ">
@@ -499,11 +502,11 @@ function stateGov() {
     if (votersDetails[index].state == "oyo") {
       generalDiv.innerHTML = `
       <table
-          class="table table-hover table-bordered border-success table-responsive w-100 border-5 voting-page-gov"
+          class="table table-hover table-bordered border-success table-responsive w-100 border-5 voting-page"
           id="oyoGovElection"
         >
           <caption-top
-            class="text-uppercase d-flex justify-content-center pt-5 pb-3 bg-success text-white captin-caption"
+            class="text-uppercase d-flex justify-content-center w-100 pt-5 pb-3 bg-success text-white captin-caption"
             >The list of election contestant in oyo state, their party logo &
             names and the fingerprint</caption-top
           >
@@ -526,7 +529,7 @@ function stateGov() {
               </td>
               <td
                 class="col-3"
-                onclick="myStateChoice('ap',)"
+                onclick="myStateChoice('ap', 'adelabu adebayo adekola  <br> & <br>  ayandele abiodun ayanfemi')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -541,7 +544,7 @@ function stateGov() {
                 <h3>aa</h3>
               </td>
               <td
-                onclick="myStateChoice('aa', )"
+                onclick="myStateChoice('aa', 'ajekigbe lateef olaniyi <br> & <br> fawole ajiboye taofeek')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -556,7 +559,7 @@ function stateGov() {
                 <h3>aac</h3>
               </td>
               <td
-                onclick="myStateChoice('aac', )"
+                onclick="myStateChoice('aac', 'okedara mojeed <br> & <br> oladimeji idowu ayomide')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -571,7 +574,7 @@ function stateGov() {
                 <h3>adc</h3>
               </td>
               <td
-                onclick="myStateChoice('adc', )"
+                onclick="myStateChoice('adc', 'ajadi bamidele ganiyu <br> & <br> oyewole oyatayo emmanuel')"
               >
                 <button class="btn btn-light w-100" id="fingers">
                   <i class="fas fa-fingerprint"></i>
@@ -587,7 +590,7 @@ function stateGov() {
                 <h3>adp</h3>
               </td>
               <td
-                onclick="myStateChoice('adp', )"
+                onclick="myStateChoice('adp', 'yusuf akim adebola <br> & <br> daniels adigun modupe')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -602,7 +605,7 @@ function stateGov() {
                 <h3>apc</h3>
               </td>
               <td
-                onclick="myStateChoice('apc', )"
+                onclick="myStateChoice('apc', 'folarin kolawole teslim <br> & <br> okunlola david oluwafemi')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -617,7 +620,7 @@ function stateGov() {
                 <h3>apga</h3>
               </td>
               <td
-                onclick="myStateChoice('apga', )"
+                onclick="myStateChoice('apga', 'adeshina adewale excel <br> & <br> oladepo john oladejo')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -632,7 +635,7 @@ function stateGov() {
                 <h3>lp</h3>
               </td>
               <td
-                onclick="myStateChoice('lp', )"
+                onclick="myStateChoice('lp', 'akinwale tawfiq tayo <br> & <br> akanji esther adebimpe')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -647,7 +650,7 @@ function stateGov() {
                 <h3>nnpp</h3>
               </td>
               <td
-                onclick="myStateChoice('nnpp', )"
+                onclick="myStateChoice('nnpp', 'popoola olukayode joshua <br> & <br> adesope modinat atinuke')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -662,7 +665,7 @@ function stateGov() {
                 <h3>pdp</h3>
               </td>
               <td
-                onclick="myStateChoice('pdp', )"
+                onclick="myStateChoice('pdp', 'makinde oluseyi abiodun <br> & <br> lawal adebayo adeleke')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -677,7 +680,7 @@ function stateGov() {
                 <h3>sdp</h3>
               </td>
               <td
-                onclick="myStateChoice('sdp', )"
+                onclick="myStateChoice('sdp', 'lana michael <br> & <br> aloyinlapa abdur rahman')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -692,7 +695,7 @@ function stateGov() {
                 <h3>ypp</h3>
               </td>
               <td
-                onclick="myStateChoice('ypp', )"
+                onclick="myStateChoice('ypp', 'euba aduragbemi <br> & <br>  ojewole jeleel')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
