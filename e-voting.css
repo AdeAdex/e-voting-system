@@ -114,6 +114,16 @@ body {
   height: 100%;
 }
 
+.scrolit {
+  height: auto;
+}
+
+#totalVoteCarousel {
+  width: 100% !important ;
+  height: 100% !important ;
+  display: flex;
+}
+
 .reg-container .reg-h1 {
   background-color: rgb(139, 160, 54);
 }
@@ -356,7 +366,8 @@ body {
   background-color: rgba(2, 239, 2, 0.17);
 }
 
-.voting-page, .voting-page-gov {
+.voting-page,
+.voting-page-gov {
   border: 8px solid green;
 }
 
@@ -386,7 +397,6 @@ td h3 {
   text-transform: uppercase;
   text-align: center;
 }
-
 
 /* #finger {
   display: flex; 
@@ -427,7 +437,12 @@ td h3 {
 .modal-fingerprint {
   font-size: 60px;
 }
-
+.btn-div {
+  flex-direction: column;
+}
+.btn-div button {
+  margin: 0px auto;
+}
 .my-choice {
   background-color: rgb(255, 123, 0) !important;
 }
@@ -444,6 +459,10 @@ td h3 {
   width: 80px;
   height: 80px;
   margin: 20px auto;
+}
+
+.sweet-alert-h3 {
+  padding: 0px 5px;
 }
 
 .fa-check {
@@ -463,6 +482,7 @@ td h3 {
   padding: 2px 15px !important;
   display: flex !important;
   margin-left: auto;
+  margin-right: 20px;
   justify-content: center;
   width: auto;
 }
@@ -650,4 +670,18 @@ td h3 {
     margin: auto;
     width: 100%;
   }
+
+  .btn-div {
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 0;
+  }
+  .btn-div button {
+    margin: 0px auto;
+    width: 25%;
+  }
+}
+
+.tr-cursor {
+  cursor: pointer;
 }
