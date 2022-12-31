@@ -1,4 +1,6 @@
-allPresidentialElectionResult = JSON.parse(localStorage.getItem("presidentialResults"));
+allPresidentialElectionResult = JSON.parse(
+  localStorage.getItem("presidentialResults")
+);
 function presidentialResult() {
   // dispre.innerHTML = "";
   for (let index = 0; index < allPresidentialElectionResult.length; index++) {
@@ -20,15 +22,9 @@ function presidentialResult() {
   }
 }
 
-
-
-
-
-
-
-
-
-stateGovElection = JSON.parse(localStorage.getItem("myStateGovernorshipResult"));
+stateGovElection = JSON.parse(
+  localStorage.getItem("myStateGovernorshipResult")
+);
 function governorResult() {
   // dispre.innerHTML = "";
   for (let index = 0; index < stateGovElection.length; index++) {
@@ -50,15 +46,20 @@ function governorResult() {
   }
 }
 
-
-
-
 function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  var table,
+    rows,
+    switching,
+    i,
+    x,
+    y,
+    shouldSwitch,
+    dir,
+    switchcount = 0;
   table = presidentialTable;
   switching = true;
   //Set the sorting direction to ascending:
-  dir = "asc"; 
+  dir = "asc";
   /*Make a loop that will continue until
   no switching has been done:*/
   while (switching) {
@@ -67,7 +68,7 @@ function sortTable(n) {
     rows = table.rows;
     /*Loop through all table rows (except the
     first, which contains table headers):*/
-    for (i = 1; i < (rows.length - 1); i++) {
+    for (i = 1; i < rows.length - 1; i++) {
       //start by saying there should be no switching:
       shouldSwitch = false;
       /*Get the two elements you want to compare,
@@ -79,7 +80,7 @@ function sortTable(n) {
       if (dir == "asc") {
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           //if so, mark as a switch and break the loop:
-          shouldSwitch= true;
+          shouldSwitch = true;
           break;
         }
       } else if (dir == "desc") {
@@ -96,7 +97,7 @@ function sortTable(n) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
       //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
+      switchcount++;
     } else {
       /*If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again.*/
@@ -118,18 +119,13 @@ function sortTable(n) {
 //       allPresidentialElectionResult.sort()
 //     }
 //   }
- 
+
 // }
 
-
-
-
-
-
 function winner() {
-  if (allPresidentialElectionResult.includes('pdp')) {
-    alert("Yes")
+  if (allPresidentialElectionResult.includes("pdp")) {
+    alert("Yes");
   } else {
-    alert("Noooo")
+    alert("Noooo");
   }
 }
