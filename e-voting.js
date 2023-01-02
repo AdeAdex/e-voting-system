@@ -67,8 +67,48 @@ if (localStorage.registeredVotersPersonalDetails) {
 }
 
 function submitRegistration() {
-  if (firstName.value == "") {
-    firstName.style.borderColor = "red";
+  var validRegex =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var foundDetails = false;
+  for (let x of votersDetails) {
+    if (x.email == email.value || x.phonenumber == phoneNumber.value) {
+      foundDetails = true;
+      break;
+    }
+  }
+  if (foundDetails == true) {
+    alert(
+      "The email or Phone number you supply has been associated with an account already"
+    );
+  } else if (
+    firstName.value == "" ||
+    lastName.value == "" ||
+    countryOption.value == "" ||
+    stateOption.value == "" ||
+    email.value == "" ||
+    phoneNumber.value == "" ||
+    pass.value == ""
+  ) {
+    // firstName.style.borderColor = "red";
+    alert("All field must be filled.");
+  } else if (!email.value.match(validRegex)) {
+    emailFeedback.style.display = "block";
+    phoneNumberFeedback.style.display = "none";
+    checkInvalidFeedback.style.display = "none";
+  } else if (isNaN(phoneNumber.value)) {
+    phoneNumberFeedback.style.display = "block";
+    emailFeedback.style.display = "none";
+    checkInvalidFeedback.style.display = "none";
+  } else if (phoneNumber.value < 11) {
+    phoneNumberFeedback.style.display = "block";
+    emailFeedback.style.display = "none";
+    checkInvalidFeedback.style.display = "none";
+    phoneNumberFeedback.innerHTML =
+      "Phone number must be at least 11 digit minimum and 14 digit maximum";
+  } else if (!invalidCheck.checked) {
+    checkInvalidFeedback.style.display = "block";
+    phoneNumberFeedback.style.display = "none";
+    emailFeedback.style.display = "none";
   } else {
     var voters = {
       //passport : photo.value,
@@ -93,6 +133,8 @@ function submitRegistration() {
     );
     showPass();
     showTotal();
+    validateEmail();
+    checkInvalidFeedback.style.display = "none";
   }
 }
 
@@ -140,13 +182,22 @@ function signIn() {
   var votersId = loginId.value;
   var votersKey = pass.value;
   var found = false;
+  var foundInRegistry = false;
   for (let index = 0; index < votersDetails.length; index++) {
     if (
       (votersDetails[index].id == votersId ||
-        votersDetails[index].email == votersId) &&
+        votersDetails[index].email == votersId ||
+        votersDetails[index].phonenumber == votersId) &&
       votersDetails[index].key == votersKey
     ) {
       found = true;
+      break;
+    } else if (
+      votersDetails[index].id == votersId ||
+      votersDetails[index].email == votersId ||
+      votersDetails[index].phonenumber == votersId
+    ) {
+      foundInRegistry = true;
       break;
     }
   }
@@ -154,7 +205,11 @@ function signIn() {
   // logic to check whether the User entered email is in allPresidentialElectionResult array
   let foundInAllPresidentialElectionResult = false;
   for (let user of allPresidentialElectionResult) {
-    if (user.myEmail === votersId) {
+    if (
+      user.myEmail === votersId ||
+      user.myId === votersId ||
+      user.myPhoneNumber === votersId
+    ) {
       foundInAllPresidentialElectionResult = true;
       break;
     }
@@ -165,8 +220,8 @@ function signIn() {
   } else if (found == true && !foundInAllPresidentialElectionResult) {
     window.location.href = "e-voting-contestantPage.html";
     warningAlert.innerHTML = ``;
-  } else if (found == false && !foundInAllPresidentialElectionResult) {
-    warningAlert.innerHTML = `<i class="fas fa-warning" id="faWarning"></i>Failed Operation. <p>You've not register before, kindly register and try again.</p>`;
+  } else if (foundInRegistry == false) {
+    warningAlert.innerHTML = `<i class="fas fa-warning" id="faWarning"></i>Failed Operation. <p>It seems the voter id/email/phone number entered hasn't been register, kindly register and try again.</p>`;
   } else {
     warningAlert.innerHTML = `<i class="fas fa-warning" id="faWarning"></i>Failed Operation. <p>Incorrect details, Kindly please check what you enter and try again.</p>`;
   }
@@ -176,7 +231,7 @@ function fingerprint() {
   loading.innerHTML = `Fingerprint Scanner Reading Your finger`;
   let waitingTime = setInterval(function () {
     if (true) {
-      loading.innerHTML = "fingerprint move too faster. Try again";
+      loading.innerHTML = "finger moved too fast. Try again";
       //window.location.href = "e-voting-contestantPage.html";
     }
   }, 5000);
@@ -377,20 +432,29 @@ if (localStorage.presidentialResults) {
 }
 
 function storePresidentialResult() {
-  let myName, myState, myEmail, myChoice;
+  let myStoreName,
+    myStoreState,
+    myStoreEmail,
+    myStoreChoice,
+    myStoreId,
+    myStorePhoneNumber;
   for (let index = 0; index < votersDetails.length; index++) {
-    myName = `${votersDetails[index].fname}`;
-    myState = `${votersDetails[index].state}`;
-    myEmail = `${votersDetails[index].email}`;
+    myStoreName = `${votersDetails[index].fname}`;
+    myStoreState = `${votersDetails[index].state}`;
+    myStoreEmail = `${votersDetails[index].email}`;
+    myStoreId = `${votersDetails[index].id}`;
+    myStorePhoneNumber = `${votersDetails[index].phonenumber}`;
   }
   for (let index = 0; index < electionResult.length; index++) {
-    myChoice = `${electionResult[index].myElectionChoice}`;
+    myStoreChoice = `${electionResult[index].myElectionChoice}`;
   }
   var allVotersElectionResult = {
-    name: myName,
-    myState: myState,
-    myEmail: myEmail,
-    myLatestChoice: myChoice,
+    name: myStoreName,
+    myState: myStoreState,
+    myEmail: myStoreEmail,
+    myLatestChoice: myStoreChoice,
+    myId: myStoreId,
+    myPhoneNumber: myStorePhoneNumber,
   };
   electionResult.splice(0);
   localStorage.setItem("myVoteChoice", JSON.stringify(electionResult));
@@ -400,7 +464,7 @@ function storePresidentialResult() {
     "presidentialResults",
     JSON.stringify(allPresidentialElectionResult)
   );
-  window.location.href = "index.html";
+  window.location.href = "e-voting-homePage.html";
 }
 
 var stateGovElection = [];
@@ -410,19 +474,19 @@ if (localStorage.myStateGovernorshipResult) {
 }
 
 function storeGovernorshipResult() {
-  let myName, myState, myEmail, myChoice;
+  let myStoreName, myStoreState, myStoreEmail, myStoreChoice;
   for (let index = 0; index < votersDetails.length; index++) {
-    myName = `${votersDetails[index].fname}`;
-    myState = `${votersDetails[index].state}`;
-    myEmail = `${votersDetails[index].email}`;
+    myStoreName = `${votersDetails[index].fname}`;
+    myStoreState = `${votersDetails[index].state}`;
+    myStoreEmail = `${votersDetails[index].email}`;
   }
   for (let index = 0; index < myStateElectionResult.length; index++) {
-    myChoice = `${myStateElectionResult[index].myStateElectionChoice}`;
+    myStoreChoice = `${myStateElectionResult[index].myStateElectionChoice}`;
   }
   var allVotersElectionResult = {
-    name: myName,
-    myState: myState,
-    myEmail: myEmail,
+    name: myStoreName,
+    myState: myStoreState,
+    myEmail: myStoreEmail,
     myStateLatestChoice: myChoice,
   };
   myStateElectionResult.splice(0);
@@ -436,7 +500,7 @@ function storeGovernorshipResult() {
     "myStateGovernorshipResult",
     JSON.stringify(stateGovElection)
   );
-  window.location.href = "index.html";
+  window.location.href = "e-voting-homePage.html";
 }
 
 var inecChairman = [];
@@ -904,25 +968,4 @@ function stateGov() {
   }
 }
 
-// (() => {
-//   "use strict";
 
-//   // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//   const forms = document.querySelectorAll(".needs-validation");
-
-//   // Loop over them and prevent submission
-//   Array.from(forms).forEach((form) => {
-//     form.addEventListener(
-//       "submit",
-//       (event) => {
-//         if (!form.checkValidity()) {
-//           event.preventDefault();
-//           event.stopPropagation();
-//         }
-
-//         form.classList.add("was-validated");
-//       },
-//       false
-//     );
-//   });
-// })();
