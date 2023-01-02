@@ -46,6 +46,7 @@ body {
   background-blend-mode: color-burn;
   color: white;
   background-color: green;
+  padding: 10px 20px;
 }
 
 .language-container {
@@ -114,14 +115,15 @@ body {
   height: 100%;
 }
 
-.scrolit {
-  height: auto;
-}
-
 #totalVoteCarousel {
   width: 100% !important ;
   height: 100% !important ;
   display: flex;
+}
+
+#totalVoteCarousel .carousel-inner {
+  margin-left: 0 !important;
+  width: 100% !important;
 }
 
 .reg-container .reg-h1 {
@@ -168,6 +170,17 @@ body {
   transition: 0.5s;
   color: whitesmoke;
 }
+
+
+#checkInvalidFeedback, #phoneNumberFeedback, #emailFeedback
+ {
+  color: orangered;
+  display: none;
+  font-weight: bold;
+}
+
+
+
 
 .container {
   padding: 0px 0px;
@@ -222,6 +235,10 @@ body {
 
 .input-area input::placeholder {
   color: white;
+}
+
+.container-check-txt {
+  font-size: 12px;
 }
 
 #rulesModal {
@@ -499,6 +516,10 @@ td h3 {
   background-position: 50% 100%;
 }
 
+.contestant-container {
+  width: 100%;
+}
+
 .chairman-body {
   height: 100vh;
 }
@@ -535,6 +556,29 @@ td h3 {
     );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (min-width: 600px) {
   .inec-logo,
   .vote-logo,
@@ -542,20 +586,32 @@ td h3 {
     background-repeat: no-repeat;
     background-size: contain;
     width: 40%;
+    height: 150px;
   }
 
-  .homepage-body {
-    background-image: url("pic/v1.jpeg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    height: 100vh;
-  }
+    .homepage-body {
+      /* background-image: url("pic/v1.jpeg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat; */
+      height: 100vh;
+    }
 
   .main-container {
-    width: 40% !important;
+    width: 100% !important;
     margin: 0px auto;
     padding-bottom: 60px;
     background-color: rgb(33, 202, 33);
+  }
+
+  .information {
+    padding: 40px;
+    background-size: cover;
+  }
+
+  .screen-container {
+    width: 40%;
+    margin: 0px auto;
+    padding: 0px;
   }
 
   #rulesModal {
@@ -566,7 +622,7 @@ td h3 {
     left: 0;
     top: 0;
     right: 0;
-    width: 40%;
+    width: 100%;
     height: 100%;
     margin: 0px auto;
     overflow: auto;
@@ -585,12 +641,17 @@ td h3 {
 
   .contestant-page {
     height: 100vh;
-    width: 50% !important;
+    width: 100% !important;
     margin: 0px auto;
     background-image: url("pic/idshow1.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 100%;
+  }
+
+  .contestant-container {
+    width: 40%;
+    padding: 0px 30px;
   }
 
   #showPassContainer {
@@ -600,7 +661,8 @@ td h3 {
   }
 
   .container {
-    width: 40% !important;
+    max-width: 100% !important;
+    height: 100%;
     padding: 0px 0px;
     background-image: url(pic/login-background-image.jpeg);
     background-repeat: no-repeat;
@@ -609,10 +671,18 @@ td h3 {
   }
 
   .login-body {
-    background-image: url("pic/v1.jpeg");
+    /* background-image: url("pic/v1.jpeg"); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100vh;
+    width: 100%;
+    /* background-color: red; */
+  }
+
+
+  .login-main {
+    width: 40%;
+    margin: 0px auto;
   }
 
   .vp-main {
