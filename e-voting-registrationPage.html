@@ -161,15 +161,30 @@
         </div>
         <div class="col-md-8 m-auto reg-form">
           <label for="validationCustom05" class="form-label mt-2">Email</label>
-          <input type="email" class="form-control" id="email" required />
-          <div class="invalid-feedback">Please provide a valid email.</div>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            onsubmit="validateEmail()"
+            required
+          />
+          <div class="invalid-feedback" id="emailFeedback">
+            Please provide a valid email.
+          </div>
         </div>
         <div class="col-md-8 m-auto reg-form">
           <label for="validationCustom05" class="form-label mt-2"
             >Phone Number</label
           >
-          <input type="tel" class="form-control" id="phoneNumber" required />
-          <div class="invalid-feedback">
+          <input
+            type="tel"
+            class="form-control"
+            id="phoneNumber"
+            minlength="11"
+            maxlength="14"
+            required
+          />
+          <div class="invalid-feedback" id="phoneNumberFeedback">
             Please provide a valid phone number.
           </div>
         </div>
@@ -233,10 +248,10 @@
               id="invalidCheck"
               required
             />
-            <label class="form-check-label" for="invalidCheck">
+            <label class="form-check-label" for="invalidChec">
               Agree to terms and conditions
             </label>
-            <div class="invalid-feedback">
+            <div class="invalid-feedback" id="checkInvalidFeedback">
               You must agree before submitting.
             </div>
           </div>
