@@ -11,13 +11,48 @@ body {
 
 .homepage-body {
   background-color: rgb(33, 202, 33);
+  height: 100vh;
 }
+
+/* .main-container {
+  height: 100vh;
+} */
 
 .printer-container {
   width: 100%;
+  height: 60px;
   display: flex;
   justify-content: center;
   padding: 10px 0px;
+}
+
+.printer-container svg {
+  height: 100%;
+  width: 23%;
+  margin-right: 0px;
+}
+svg text {
+  font-family: Lora;
+  letter-spacing: 5px;
+  stroke: #fdfdfd;
+  font-size: 25px;
+  font-weight: bold;
+  stroke-width: 0.6;
+  animation: textAnimate 5s infinite alternate;
+}
+
+@keyframes textAnimate {
+  0% {
+    stroke-dasharray: 0 50%;
+    stroke-dashoffset: 20%;
+    fill: hsl(244, 99%, 50%);
+  }
+
+  100% {
+    stroke-dasharray: 10% 0;
+    stroke-dashoffstet: -30%;
+    fill: rgba(255, 1, 1, 0);
+  }
 }
 
 .logo-container {
@@ -171,16 +206,13 @@ body {
   color: whitesmoke;
 }
 
-
-#checkInvalidFeedback, #phoneNumberFeedback, #emailFeedback
- {
+#checkInvalidFeedback,
+#phoneNumberFeedback,
+#emailFeedback {
   color: orangered;
   display: none;
   font-weight: bold;
 }
-
-
-
 
 .container {
   padding: 0px 0px;
@@ -556,29 +588,6 @@ td h3 {
     );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (min-width: 600px) {
   .inec-logo,
   .vote-logo,
@@ -589,12 +598,12 @@ td h3 {
     height: 150px;
   }
 
-    .homepage-body {
-      /* background-image: url("pic/v1.jpeg");
+  .homepage-body {
+    /* background-image: url("pic/v1.jpeg");
       background-size: 100% 100%;
       background-repeat: no-repeat; */
-      height: 100vh;
-    }
+    height: 100vh;
+  }
 
   .main-container {
     width: 100% !important;
@@ -679,7 +688,6 @@ td h3 {
     /* background-color: red; */
   }
 
-
   .login-main {
     width: 40%;
     margin: 0px auto;
@@ -754,4 +762,9 @@ td h3 {
 
 .tr-cursor {
   cursor: pointer;
+}
+
+
+.nxti-btn {
+  margin: 20px auto;
 }
