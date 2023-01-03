@@ -237,27 +237,7 @@ function fingerprint() {
   }, 5000);
 }
 
-// function signIn() {
-//   var votersId = loginId.value;
-//   var votersKey = pass.value;
-//   var found = false;
-//   for (let index = 0; index < votersDetails.length; index++) {
-//     if (
-//       (votersDetails[index].id == votersId || votersDetails[index].email == votersId) &&
-//       votersDetails[index].key == votersKey
-//     ) {
-//       found = true;
-//       break;
-//     }
-//   }
 
-//   if (found == true) {
-//     window.location.href = "e-voting-contestantPage.html";
-//   } else {
-//   alert("Incorrect details, Kindly please check what you enter and re-type");
-// }
-
-// }
 
 function lan() {
   if (formSelect.value == "yoruba") {
@@ -487,7 +467,7 @@ function storeGovernorshipResult() {
     name: myStoreName,
     myState: myStoreState,
     myEmail: myStoreEmail,
-    myStateLatestChoice: myChoice,
+    myStateLatestChoice: myStoreChoice,
   };
   myStateElectionResult.splice(0);
   localStorage.setItem(
@@ -773,7 +753,7 @@ function stateGov() {
     } else if (votersDetails[index].state == "lagos") {
       generalDiv.innerHTML = `
       <table
-          class="table table-hover table-bordered border-success table-responsive w-100 border-5 voting-page-gov"
+          class="table table-hover table-bordered border-success table-responsive w-100 border-5 voting-page"
           id="oyoGovElection"
         >
           <caption-top
@@ -800,7 +780,7 @@ function stateGov() {
               </td>
               <td
                 class="col-3"
-                onclick="myStateChoice('ap',)"
+                onclick="myStateChoice('ap','dickson hakeem olaogun <br> & <br> mate caroline emimie')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -815,7 +795,7 @@ function stateGov() {
                 <h3>aa</h3>
               </td>
               <td
-                onclick="myStateChoice('aa', )"
+                onclick="myStateChoice('aa', 'balogun tope abdulrazaq <br> & <br> salako oluwatosin mautin')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -830,7 +810,7 @@ function stateGov() {
                 <h3>aac</h3>
               </td>
               <td
-                onclick="myStateChoice('aac', )"
+                onclick="myStateChoice('aac', 'olayiwola akeem olaide <br> & <br> eze benneth segun')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -845,7 +825,7 @@ function stateGov() {
                 <h3>adc</h3>
               </td>
               <td
-                onclick="myStateChoice('adc', )"
+                onclick="myStateChoice('adc', 'doherty olufunso adeshina <br> & <br> giwa amu rosemary')"
               >
                 <button class="btn btn-light w-100" id="fingers">
                   <i class="fas fa-fingerprint"></i>
@@ -861,7 +841,7 @@ function stateGov() {
                 <h3>adp</h3>
               </td>
               <td
-                onclick="myStateChoice('adp', )"
+                onclick="myStateChoice('adp', 'doherty olufunso adeshina <br> & <br> adewusi omobola tawakalit')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -876,7 +856,7 @@ function stateGov() {
                 <h3>apc</h3>
               </td>
               <td
-                onclick="myStateChoice('apc', )"
+                onclick="myStateChoice('apc', 'sanwo-olu babajide olusola <br> & <br> hamzat kadri obafemi')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -891,7 +871,7 @@ function stateGov() {
                 <h3>lp</h3>
               </td>
               <td
-                onclick="myStateChoice('lp', )"
+                onclick="myStateChoice('lp', 'rhodes-vivour gbadebo patrick <br> & <br> oyefusi abiodun adetola')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -906,7 +886,7 @@ function stateGov() {
                 <h3>nnpp</h3>
               </td>
               <td
-                onclick="myStateChoice('nnpp', )"
+                onclick="myStateChoice('nnpp', 'jim-kamal olarewaju olalekan <br> & <br> abiola faosa koya')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -921,7 +901,7 @@ function stateGov() {
                 <h3>pdp</h3>
               </td>
               <td
-                onclick="myStateChoice('pdp', )"
+                onclick="myStateChoice('pdp', 'adediran azeez olajide <br> & <br> akindele ayotunde olufunke')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -936,7 +916,7 @@ function stateGov() {
                 <h3>sdp</h3>
               </td>
               <td
-                onclick="myStateChoice('sdp', )"
+                onclick="myStateChoice('sdp', 'uthman olakunle taofeek <br> & <br> animasahun morenikeji abeni')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
@@ -951,7 +931,7 @@ function stateGov() {
                 <h3>ypp</h3>
               </td>
               <td
-                onclick="myStateChoice('ypp', )"
+                onclick="myStateChoice('ypp', 'ajayi wasiu adebayo <br> & <br> shodoke temitayo')"
                 id="finger"
               >
                 <i class="fas fa-fingerprint"></i>
