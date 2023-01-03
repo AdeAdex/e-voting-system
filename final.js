@@ -46,6 +46,21 @@ function governorResult() {
   }
 }
 
+
+
+function next() {
+  window.location.href = "toFinal.html";
+}
+
+
+
+
+
+
+
+
+
+
 function sortTable(n) {
   var table,
     rows,
