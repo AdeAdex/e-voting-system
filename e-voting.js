@@ -444,7 +444,7 @@ function storePresidentialResult() {
     "presidentialResults",
     JSON.stringify(allPresidentialElectionResult)
   );
-  window.location.href = "e-voting-homePage.html";
+  window.location.href = "index.html";
 }
 
 var stateGovElection = [];
@@ -480,7 +480,7 @@ function storeGovernorshipResult() {
     "myStateGovernorshipResult",
     JSON.stringify(stateGovElection)
   );
-  window.location.href = "e-voting-homePage.html";
+  window.location.href = "index.html";
 }
 
 var inecChairman = [];
