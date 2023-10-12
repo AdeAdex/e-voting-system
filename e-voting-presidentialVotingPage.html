@@ -36,9 +36,8 @@
               <img src="pic/ap.jpeg" alt="" />
               <h3>ap</h3>
             </td>
-            <td
-              class="col-3"
-              onclick="myChoice('ap', `${ap.innerHTML} <br> & <br> ${ap2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'ap', `${ap.innerHTML} <br> & <br> ${ap2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -52,8 +51,8 @@
               <img src="pic/aa.jpeg" alt="" />
               <h3>aa</h3>
             </td>
-            <td
-              onclick="myChoice('aa', `${aa.innerHTML} <br> & <br> ${aa2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'aa', `${aa.innerHTML} <br> & <br> ${aa2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -67,8 +66,8 @@
               <img src="pic/aac.jpeg" alt="" />
               <h3>aac</h3>
             </td>
-            <td
-              onclick="myChoice('aac', `${aac.innerHTML} <br> & <br> ${aac2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'aac', `${aac.innerHTML} <br> & <br> ${aac2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -82,12 +81,10 @@
               <img src="pic/adc.jpeg" alt="" />
               <h3>adc</h3>
             </td>
-            <td
-              onclick="myChoice('adc', `${adc.innerHTML} <br> & <br> ${adc2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'adc', `${adc.innerHTML} <br> & <br> ${adc2.innerHTML}`);"
             >
-              <button class="btn btn-light w-100" id="fingers">
                 <i class="fas fa-fingerprint"></i>
-              </button>
             </td>
           </tr>
           <tr class="w-100">
@@ -98,8 +95,8 @@
               <img src="pic/adp.jpeg" alt="" />
               <h3>adp</h3>
             </td>
-            <td
-              onclick="myChoice('adp', `${adp.innerHTML} <br> & <br> ${adp2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'adp', `${adp.innerHTML} <br> & <br> ${adp2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -113,8 +110,8 @@
               <img src="pic/apc.png" alt="" />
               <h3>apc</h3>
             </td>
-            <td
-              onclick="myChoice('apc', `${apc.innerHTML} <br> & <br> ${apc2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'apc', `${apc.innerHTML} <br> & <br> ${apc2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -128,8 +125,8 @@
               <img src="pic/apga.png" alt="" />
               <h3>apga</h3>
             </td>
-            <td
-              onclick="myChoice('apga', `${apga.innerHTML} <br> & <br> ${apga2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'apga', `${apga.innerHTML} <br> & <br> ${apga2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -143,8 +140,8 @@
               <img src="pic/lp.png" alt="" />
               <h3>lp</h3>
             </td>
-            <td
-              onclick="myChoice('lp', `${lp.innerHTML} <br> & <br> ${lp2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'lp', `${lp.innerHTML} <br> & <br> ${lp2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -158,8 +155,8 @@
               <img src="pic/nnpp.jpeg" alt="" />
               <h3>nnpp</h3>
             </td>
-            <td
-              onclick="myChoice('nnpp', `${nnpp.innerHTML} <br> & <br> ${nnpp2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'nnpp', `${nnpp.innerHTML} <br> & <br> ${nnpp2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -173,8 +170,8 @@
               <img src="pic/pdp.png" alt="" />
               <h3>pdp</h3>
             </td>
-            <td
-              onclick="myChoice('pdp', `${pdp.innerHTML} <br> & <br> ${pdp2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'pdp', `${pdp.innerHTML} <br> & <br> ${pdp2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -188,8 +185,8 @@
               <img src="pic/sdp.png" alt="" />
               <h3>sdp</h3>
             </td>
-            <td
-              onclick="myChoice('sdp', `${sdp.innerHTML} <br> & <br> ${sdp2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'sdp', `${sdp.innerHTML} <br> & <br> ${sdp2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -203,8 +200,8 @@
               <img src="pic/ypp.png" alt="" id="im" />
               <h3>ypp</h3>
             </td>
-            <td
-              onclick="myChoice('ypp', `${ypp.innerHTML} <br> & <br> ${ypp2.innerHTML}`)"
+            <td class="col-3 fingerprint-td"
+              onclick="myChoice(this, 'ypp', `${ypp.innerHTML} <br> & <br> ${ypp2.innerHTML}`);"
               id="finger"
             >
               <i class="fas fa-fingerprint"></i>
@@ -215,7 +212,7 @@
       <div class="w-100 btn-div mt-3 d-flex gap-3 justify-content-center pb-5">
         <button
           class="btn btn-warning fw-bold fs-3 my-choice text-light col-8"
-          onclick="dispMyChoice()"
+          onclick="dispMyChoice(this, )"
         >
           My choice
         </button>

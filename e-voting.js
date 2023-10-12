@@ -265,16 +265,43 @@ if (localStorage.myVoteChoice) {
   electionResult = oldResult;
 }
 
-function myChoice(para, para2) {
+
+// script
+
+
+var lastClickedFingerprint = null;
+
+function myChoice(tdElement, para, para2) {
+  // If a previous fingerprint was clicked, reset its background color to white
+  if (lastClickedFingerprint) {
+    lastClickedFingerprint.style.backgroundColor = '';
+  }
+
+  // Set the background color of the currently clicked td to red
+  tdElement.style.backgroundColor = 'red';
+
+  // Store the currently clicked td as the last clicked
+  lastClickedFingerprint = tdElement;
+
   var myElectionResult = {
     myElectionChoice: para,
     myElectionChoiceName: para2,
-    // myElectionChoiceImg: picture1,
   };
   electionResult.splice(0, 1, myElectionResult);
   localStorage.setItem("myVoteChoice", JSON.stringify(electionResult));
-  fingers.style.backgroundColor = "red";
 }
+
+
+
+// function myChoice(para, para2) {
+//   var myElectionResult = {
+//     myElectionChoice: para,
+//     myElectionChoiceName: para2,
+//   };
+//   electionResult.splice(0, 1, myElectionResult);
+//   localStorage.setItem("myVoteChoice", JSON.stringify(electionResult));
+// }
+
 
 myVoteResult = "";
 myVoltResultName = "";
