@@ -419,6 +419,8 @@ svg text {
 .voting-page,
 .voting-page-gov {
   border: 8px solid green;
+  width: 100%;
+  /* overflow: hidden ; */
 }
 
 .captin-caption {
@@ -448,10 +450,6 @@ td h3 {
   text-align: center;
 }
 
-/* #finger {
-  display: flex; 
-   background-color: red;
-} */
 
 .voting-page .fa-fingerprint {
   color: blue;
@@ -708,10 +706,14 @@ td h3 {
     width: 40%;
     margin: 0px auto;
   }
+  .presidential-voting-page {
+    background-color: rgb(0, 0, 0);
+  }
 
   .vp-main {
     width: 40%;
     margin: 0px auto;
+    background-color: whitesmoke;
   }
 
   .sweet-alert-modal {
