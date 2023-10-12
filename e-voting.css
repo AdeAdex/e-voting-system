@@ -698,12 +698,10 @@ td h3 {
   }
 
   .login-body {
-    /* background-image: url("pic/v1.jpeg"); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100%;
-    /* background-color: red; */
   }
 
   .login-main {
