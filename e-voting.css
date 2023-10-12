@@ -20,7 +20,6 @@ body {
 
 .printer-container {
   width: 100%;
-  /* height: 50px; */
   display: flex;
   justify-content: center;
   padding: 10px 0px;
@@ -99,6 +98,7 @@ svg text {
 .screen-container {
   padding-top: 0px;
   margin: 0px 50px;
+  padding-bottom: 20px;
 }
 
 #formSelect {
@@ -589,6 +589,7 @@ td h3 {
     );
 }
 
+
 @media screen and (min-width: 600px) {
   .inec-logo,
   .vote-logo,
@@ -600,9 +601,6 @@ td h3 {
   }
 
   .homepage-body {
-    /* background-image: url("pic/v1.jpeg");
-      background-size: 100% 100%;
-      background-repeat: no-repeat; */
     height: 100vh;
   }
 
@@ -629,7 +627,6 @@ td h3 {
   .main-container {
     width: 100% !important;
     margin: 0px auto;
-    padding-bottom: 60px;
     background-color: rgb(33, 202, 33);
   }
 
