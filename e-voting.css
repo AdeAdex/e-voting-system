@@ -266,7 +266,7 @@ svg text {
   box-shadow: inset 0px 0px 2px gray;
 }
 
-.input-area input::placeholder {
+.input-area input::placeholder, #forgotpassinput::placeholder {
   color: white;
 }
 

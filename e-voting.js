@@ -234,7 +234,7 @@ function toggleForgotPassword() {
   forgotPasswordSection.style.display = "block";
   setTimeout(function() {
     forgotPasswordSection.style.display = "none";
-  }, 10000); // 10 seconds (10000 milliseconds)
+  }, 10000);
 }
 
 
