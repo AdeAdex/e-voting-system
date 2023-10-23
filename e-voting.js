@@ -231,15 +231,12 @@ function signIn() {
 
 function toggleForgotPassword() {
   var forgotPasswordSection = document.getElementById("forgotPasswordSection");
-  if (forgotPasswordSection.style.display === "none") {
-    forgotPasswordSection.style.display = "block";
-    setTimeout(function() {
-      forgotPasswordSection.style.display = "none";
-    }, 10000); // 10 seconds (10000 milliseconds)
-  } else {
+  forgotPasswordSection.style.display = "block";
+  setTimeout(function() {
     forgotPasswordSection.style.display = "none";
-  }
+  }, 10000); // 10 seconds (10000 milliseconds)
 }
+
 
 function retrievePassword() {
   var votersInput = forgotpassinput.value;
