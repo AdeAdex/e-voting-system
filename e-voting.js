@@ -629,6 +629,20 @@ function toINECChairman() {
 
 
 function stateGov() {
+  if (stateOption.value !== "lagos" && stateOption.value !== "oyo") {
+    Swal.fire({
+      title: "Governorship Election Information",
+      text: "Please note that there are no governorship elections available for the state you have selected. We recommend choosing either Lagos or Oyo state to have the full experience of the voting application. State elections are only available for Lagos and Oyo. We apologize for any inconvenience and want to assure you that we are not biased. Since this is just a project, we have focused on Lagos and Oyo states for demonstration purposes.",
+      icon: "info",
+    });
+  }
+   else {
+    Swal.fire({
+      title: "Governorship Election Information",
+      text: `You have selected ${stateOption.value} state. You are now eligible to participate in the governorship election of ${stateOption.value}. We appreciate your engagement in the voting process.`,
+      icon: "info",
+    });
+  }
   generalDiv.innerHTML = "";
   for (let index = 0; index < votersDetails.length; index++) {
     if (votersDetails[index].state == "oyo") {
