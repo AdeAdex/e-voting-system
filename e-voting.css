@@ -253,7 +253,7 @@ svg text {
   color: whitesmoke;
 }
 
-.input-area input {
+.input-area input, #forgotpassinput {
   color: darkorange;
   border: 3px solid #3498db;
   transition: 0.5s;
@@ -268,6 +268,14 @@ svg text {
 
 .input-area input::placeholder {
   color: white;
+}
+
+#forgotPasswordSection {
+  display: none;
+}
+
+#myPassword {
+  border-radius: 5px;
 }
 
 .container-check-txt {

@@ -227,6 +227,50 @@ function signIn() {
   }
 }
 
+
+
+function toggleForgotPassword() {
+  var forgotPasswordSection = document.getElementById("forgotPasswordSection");
+  if (forgotPasswordSection.style.display === "none") {
+    forgotPasswordSection.style.display = "block";
+    setTimeout(function() {
+      forgotPasswordSection.style.display = "none";
+    }, 10000); // 10 seconds (10000 milliseconds)
+  } else {
+    forgotPasswordSection.style.display = "none";
+  }
+}
+
+function retrievePassword() {
+  var votersInput = forgotpassinput.value;
+  var found = false;
+  var index;
+
+  for (index = 0; index < votersDetails.length; index++) {
+    if (votersDetails[index].email == votersInput || votersDetails[index].phonenumber == votersInput) {
+      found = true;
+      break;
+    }
+  }
+
+  if (found) {
+    myPassword.innerHTML = "Your Voter's Key is " + votersDetails[index].key + " " + " while your Voter's ID is " + votersDetails[index].id;
+    myPassword.style.color = "white"
+    myPassword.style.backgroundColor = "red"
+  } else {
+    myPassword.innerHTML = "We apologize, but the information provided appears to be incorrect. Please review your ID, Email, or Phone Number and kindly retry."
+    myPassword.style.color = "red"
+    myPassword.style.backgroundColor = "#ffe6e6"
+  }
+}
+
+
+
+
+
+
+
+
 function fingerprint() {
   loading.innerHTML = `Fingerprint Scanner Reading Your finger`;
   let waitingTime = setInterval(function () {
@@ -584,6 +628,8 @@ function toGovernorshipVotingPage() {
 function toINECChairman() {
   window.location.href = "inec-chairman-registration-page.html"
 }
+
+
 
 function stateGov() {
   generalDiv.innerHTML = "";
