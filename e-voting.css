@@ -560,10 +560,12 @@ td h3 {
 }
 
 .chairman-body {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
 .chairman-main-container {
+  width: 100%;
   padding: 50px;
   background-image: linear-gradient(
       180deg,
@@ -578,6 +580,7 @@ td h3 {
       rgb(150, 150, 175) 10%
     );
 }
+
 
 .chairman-main-login-container {
   padding: 50px;

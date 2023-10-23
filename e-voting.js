@@ -572,7 +572,7 @@ if (localStorage.InecChairmanDetails) {
 }
 
 function chairmanReg() {
-  if (firstName.value == "") {
+  if (firstName.value == "" || lastName.value == "" || email.value == "" || pass.value == "") {
     firstName.style.borderColor = "red";
   } else {
     var inecBoss = {
