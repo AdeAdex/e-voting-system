@@ -271,9 +271,6 @@ svg text {
 .input-area input::placeholder, #forgotpassinput::placeholder, #nin::placeholder {
   color: white;
 }
-#nin {
-  z-index: 1;
-}
 
 #forgotPasswordSection {
   display: none;
