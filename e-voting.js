@@ -78,9 +78,9 @@ function submitRegistration() {
   }
   if (foundDetails == true) {
     Swal.fire({
-      text: 'The email or Phone number you supply has been associated with an account already',
-      icon: 'warning'
-    })
+      text: "The email or Phone number you supply has been associated with an account already",
+      icon: "warning",
+    });
   } else if (
     firstName.value == "" ||
     lastName.value == "" ||
@@ -92,9 +92,9 @@ function submitRegistration() {
   ) {
     // firstName.style.borderColor = "red";
     Swal.fire({
-      text: 'All field must be filled!',
-      icon: 'warning'
-    })
+      text: "All field must be filled!",
+      icon: "warning",
+    });
   } else if (!email.value.match(validRegex)) {
     emailFeedback.style.display = "block";
     phoneNumberFeedback.style.display = "none";
@@ -171,7 +171,7 @@ function closeSaveNameModal() {
 }
 
 function closeSweetAlert() {
-  sweetAlert.style.display = "none";
+  sweetAlertDiv.style.display = "none";
 }
 
 function closeShowPass() {
@@ -231,16 +231,13 @@ function signIn() {
   }
 }
 
-
-
 function toggleForgotPassword() {
   var forgotPasswordSection = document.getElementById("forgotPasswordSection");
   forgotPasswordSection.style.display = "block";
-  setTimeout(function() {
+  setTimeout(function () {
     forgotPasswordSection.style.display = "none";
   }, 10000);
 }
-
 
 function retrievePassword() {
   var votersInput = forgotpassinput.value;
@@ -248,29 +245,31 @@ function retrievePassword() {
   var index;
 
   for (index = 0; index < votersDetails.length; index++) {
-    if (votersDetails[index].email == votersInput || votersDetails[index].phonenumber == votersInput) {
+    if (
+      votersDetails[index].email == votersInput ||
+      votersDetails[index].phonenumber == votersInput
+    ) {
       found = true;
       break;
     }
   }
 
   if (found) {
-    myPassword.innerHTML = "Your Voter's Key is " + votersDetails[index].key + " " + " while your Voter's ID is " + votersDetails[index].id;
-    myPassword.style.color = "white"
-    myPassword.style.backgroundColor = "red"
+    myPassword.innerHTML =
+      "Your Voter's Key is " +
+      votersDetails[index].key +
+      " " +
+      " while your Voter's ID is " +
+      votersDetails[index].id;
+    myPassword.style.color = "white";
+    myPassword.style.backgroundColor = "red";
   } else {
-    myPassword.innerHTML = "We apologize, but the information provided appears to be incorrect. Please review your ID, Email, or Phone Number and kindly retry."
-    myPassword.style.color = "red"
-    myPassword.style.backgroundColor = "#ffe6e6"
+    myPassword.innerHTML =
+      "We apologize, but the information provided appears to be incorrect. Please review your ID, Email, or Phone Number and kindly retry.";
+    myPassword.style.color = "red";
+    myPassword.style.backgroundColor = "#ffe6e6";
   }
 }
-
-
-
-
-
-
-
 
 function fingerprint() {
   loading.innerHTML = `Fingerprint Scanner Reading Your finger`;
@@ -281,8 +280,6 @@ function fingerprint() {
     }
   }, 5000);
 }
-
-
 
 function lan() {
   if (formSelect.value == "yoruba") {
@@ -310,19 +307,16 @@ if (localStorage.myVoteChoice) {
   electionResult = oldResult;
 }
 
-
-
-
 var lastClickedFingerprint = null;
 
 function myChoice(tdElement, para, para2) {
   // If a previous fingerprint was clicked, reset its background color to white
   if (lastClickedFingerprint) {
-    lastClickedFingerprint.style.backgroundColor = '';
+    lastClickedFingerprint.style.backgroundColor = "";
   }
 
   // Set the background color of the currently clicked td to red
-  tdElement.style.backgroundColor = 'red';
+  tdElement.style.backgroundColor = "red";
 
   // Store the currently clicked td as the last clicked
   lastClickedFingerprint = tdElement;
@@ -334,9 +328,6 @@ function myChoice(tdElement, para, para2) {
   electionResult.splice(0, 1, myElectionResult);
   localStorage.setItem("myVoteChoice", JSON.stringify(electionResult));
 }
-
-
-
 
 myVoteResult = "";
 myVoltResultName = "";
@@ -352,38 +343,52 @@ function dispMyChoice() {
   if (electionResult.length == 0) {
     Swal.fire({
       text: "You've not made any choice, Please select a choice first",
-      icon: 'warning'
-    })
+      icon: "warning",
+    });
   } else {
     for (let index = 0; index < electionResult.length; index++) {
       electionResult = JSON.parse(localStorage.getItem("myVoteChoice"));
-      sweetAlert.style.display = "flex";
-      sweetAlert.innerHTML = `
-    <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
-          <div class=" sweet-alert d-flex justify-content-center"><i class="fas fa-check m-auto"></i></div>
-          <div class="w-100">
-            <h3 class="sweet-alert-h3 text-center"><p>Thank you for voting</p>  <strong id="mySelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Voting successful, remember to print or screenshot your volt's result.</p></h3>
-          </div>
-          <div class="m-2 text-center fw-bold text-uppercase">
-          <table class="table w-100 fs-6 ">
-            <tr>
-              <th>Name</th>
-              <th>Party logo</th>
-              <th>Party Name</th>
-            </tr>
-            <tr>
-              <td id="myVoltResultName">${electionResult[index].myElectionChoiceName}</td>
-              <td></td>
-              <td id="myVoltResult" class="">${electionResult[index].myElectionChoice}</td>
-            </tr>
-          </table> 
-          </div>
-          <footer class="w-100">
-            <button class="btn btn-success okay-btn" onclick="closeSweetAlert()"> Okay</button>
-            <button class="btn btn-primary fs-4 print-btn" onclick="window.print();">Print</button>
-          </footer>
-        </div>
-    `;
+      Swal.fire({
+        title: "Voting successful",
+        text: "You won't be able to revert this!",
+        icon: "success",
+        html: `
+<div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
+<div class="w-100">
+  <h3 class="sweet-alert-h3 text-center">Thank you for voting <strong id="myOwnSelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Remember to print or screenshot your volt's result.</p></h3>
+</div>
+<div class="m-2 text-center fw-bold text-uppercase">
+<table class="table w-100 fs-6 ">
+  <tr>
+    <th>Name</th>
+    <th>Party logo</th>
+    <th>Party Name</th>
+  </tr>
+  <tr>
+    <td id="myOwnVoltResultName">${electionResult[index].myElectionChoiceName}</td>
+    <td></td>
+    <td id="myOwnVoltResult" class="">${electionResult[index].myElectionChoice}</td>
+  </tr>
+</table> 
+</div>
+<footer class="w-100">
+  <button class="btn btn-primary fs-4 print-btn" onclick="window.print();">Print</button>
+</footer>
+</div>
+`,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Okay",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            "Saved!",
+            `Your Choice for the Nigeria Presidential election has been saved.`,
+            "success"
+          );
+        }
+      });
     }
   }
 }
@@ -394,16 +399,14 @@ if (localStorage.myStateVoteChoice) {
   myStateElectionResult = myStateOldResult;
 }
 
-
-
 var lastClickedFingerprint = null;
 
-function  myStateChoice(tdElement, para, para2) {
+function myStateChoice(tdElement, para, para2) {
   if (lastClickedFingerprint) {
-    lastClickedFingerprint.style.backgroundColor = '';
+    lastClickedFingerprint.style.backgroundColor = "";
   }
 
-  tdElement.style.backgroundColor = 'red';
+  tdElement.style.backgroundColor = "red";
 
   lastClickedFingerprint = tdElement;
 
@@ -446,40 +449,55 @@ function dispMyStateChoice() {
   if (myStateElectionResult.length == 0) {
     Swal.fire({
       text: "You've not made any choice, Please select a choice first",
-      icon: 'warning'
-    })
+      icon: "warning",
+    });
   } else {
     for (let index = 0; index < myStateElectionResult.length; index++) {
       myStateElectionResult = JSON.parse(
         localStorage.getItem("myStateVoteChoice")
       );
-      sweetAlert.style.display = "flex";
-      sweetAlert.innerHTML = `
-    <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
-          <div class=" sweet-alert d-flex justify-content-center"><i class="fas fa-check m-auto"></i></div>
-          <div class="w-100">
-            <h3 class="sweet-alert-h3 text-center"><p>Thank you for voting</p>  <strong id="myOwnSelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Voting successful, remember to print or screenshot your volt's result.</p></h3>
-          </div>
-          <div class="m-2 text-center fw-bold text-uppercase">
-          <table class="table w-100 fs-6 ">
-            <tr>
-              <th>Name</th>
-              <th>Party logo</th>
-              <th>Party Name</th>
-            </tr>
-            <tr>
-              <td id="myOwnVoltResultName">${myStateElectionResult[index].myStateElectionChoiceName}</td>
-              <td></td>
-              <td id="myOwnVoltResult" class="">${myStateElectionResult[index].myStateElectionChoice}</td>
-            </tr>
-          </table> 
-          </div>
-          <footer class="w-100">
-            <button class="btn btn-success okay-btn" onclick="closeSweetAlert()"> Okay</button>
-            <button class="btn btn-primary fs-4 print-btn" onclick="window.print();">Print</button>
-          </footer>
-        </div>
-    `;
+
+      Swal.fire({
+        title: "Voting successful",
+        text: "You won't be able to revert this!",
+        icon: "success",
+        html: `
+  <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
+  <div class="w-100">
+    <h3 class="sweet-alert-h3 text-center">Thank you for voting <strong id="myOwnSelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Remember to print or screenshot your volt's result.</p></h3>
+  </div>
+  <div class="m-2 text-center fw-bold text-uppercase">
+  <table class="table w-100 fs-6 ">
+    <tr>
+      <th>Name</th>
+      <th>Party logo</th>
+      <th>Party Name</th>
+    </tr>
+    <tr>
+      <td id="myOwnVoltResultName">${myStateElectionResult[index].myStateElectionChoiceName}</td>
+      <td></td>
+      <td id="myOwnVoltResult" class="">${myStateElectionResult[index].myStateElectionChoice}</td>
+    </tr>
+  </table> 
+  </div>
+  <footer class="w-100">
+    <button class="btn btn-primary fs-4 print-btn" onclick="window.print();">Print</button>
+  </footer>
+</div>
+  `,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Okay",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            "Saved!",
+            `Your Choice for the ${votersDetails[index].state} state Governorship election has been saved.`,
+            "success"
+          );
+        }
+      });
     }
   }
 }
@@ -488,20 +506,28 @@ function next() {}
 
 function finish() {
   Swal.fire({
-    text: `Are you sure you want to finish voting? \nNote that once you click 'OK' button, you cant make any choice again and you can't vote again. Please feel free to make your choice before clicking 'OK' button  \nYou can click 'Cancel' button here and click 'My choice' button to view your vote choice \nThanks`,
+    icon: 'warning',
+    title: 'Confirm Your Vote',
+    html: `
+      <p>Are you sure you want to finish voting?</p>
+      <p>Once you click the 'Confirm' button, you won't be able to change your vote or vote again. Please review your choices carefully.</p>
+      <p>If you want to review your choices before finalizing, you can click the 'Cancel' button and then use the 'My Choice' button to view your selections.</p>
+      <p>Thank you for participating in the voting process.</p>
+    `,
     showDenyButton: true,
-    showCancelButton: true,
-    confirmButtonText: 'Save',
-    denyButtonText: `Don't save`,
+      confirmButtonText: 'Confirm',
+    denyButtonText: 'Cancel',
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire('Saved!', '', 'success')
+      Swal.fire('Your Vote is Saved!', '', 'success');
       storePresidentialResult();
-    storeGovernorshipResult();
+      storeGovernorshipResult();
     } else if (result.isDenied) {
-      Swal.fire('Changes are not saved', '', 'info')
+      Swal.fire('Vote Not Submitted', '', 'info');
     }
-  })
+  });
+  
+  
 }
 
 var allPresidentialElectionResult = [];
@@ -589,7 +615,12 @@ if (localStorage.InecChairmanDetails) {
 }
 
 function chairmanReg() {
-  if (firstName.value == "" || lastName.value == "" || email.value == "" || pass.value == "") {
+  if (
+    firstName.value == "" ||
+    lastName.value == "" ||
+    email.value == "" ||
+    pass.value == ""
+  ) {
     firstName.style.borderColor = "red";
   } else {
     var inecBoss = {
@@ -623,8 +654,8 @@ function chairmanLogin() {
   } else {
     Swal.fire({
       text: "Incorrect details, Kindly please check what you enter and re-type",
-      icon: 'warning'
-    })
+      icon: "warning",
+    });
   }
 }
 
@@ -643,12 +674,12 @@ function toGovernorshipVotingPage() {
 }
 
 function toINECChairman() {
-  window.location.href = "inec-chairman-registration-page.html"
+  window.location.href = "inec-chairman-registration-page.html";
 }
 
-
-
 function stateGov() {
+  var stateOption = document.getElementById("stateOption"); 
+  
   if (stateOption.value !== "lagos" && stateOption.value !== "oyo") {
     Swal.fire({
       title: "Governorship Election Information",
@@ -1068,14 +1099,12 @@ function stateGov() {
   }
 }
 
-
-
-
 function toVotingPage(params) {
   Swal.fire({
-    text: 'No voting options available for this selection. Please choose another option. We apologize for any inconvenience',
-    icon: 'error'
-  })
+    title: ` We apologize for any inconvenience`,
+    text: "No voting options available for this selection. Please choose another option.",
+    icon: "error",
+  });
 }
 
 // (() => {
