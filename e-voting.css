@@ -146,7 +146,7 @@ svg text {
   position: fixed !important;
   display: flex;
   padding-bottom: 20px;
-  z-index: 3;
+  /* z-index: 3; */
 }
 #carouselExampleAutoplaying img {
   height: 100%;
@@ -271,6 +271,7 @@ svg text {
 .input-area input::placeholder, #forgotpassinput::placeholder, #nin::placeholder {
   color: white;
 }
+
 
 #forgotPasswordSection {
   display: none;

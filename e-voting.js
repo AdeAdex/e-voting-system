@@ -78,7 +78,7 @@ function submitRegistration() {
   }
   if (foundDetails == true) {
     Swal.fire({
-      title: 'The email or Phone number you supply has been associated with an account already',
+      text: 'The email or Phone number you supply has been associated with an account already',
       icon: 'warning'
     })
   } else if (
@@ -91,7 +91,10 @@ function submitRegistration() {
     pass.value == ""
   ) {
     // firstName.style.borderColor = "red";
-    Swal.fire('All field must be filled!')
+    Swal.fire({
+      text: 'All field must be filled!',
+      icon: 'warning'
+    })
   } else if (!email.value.match(validRegex)) {
     emailFeedback.style.display = "block";
     phoneNumberFeedback.style.display = "none";
@@ -348,7 +351,7 @@ function dispMyChoice() {
   }
   if (electionResult.length == 0) {
     Swal.fire({
-      title: "You've not made any choice, Please select a choice first",
+      text: "You've not made any choice, Please select a choice first",
       icon: 'warning'
     })
   } else {
@@ -442,7 +445,7 @@ function dispMyStateChoice() {
   }
   if (myStateElectionResult.length == 0) {
     Swal.fire({
-      title: "You've not made any choice, Please select a choice first",
+      text: "You've not made any choice, Please select a choice first",
       icon: 'warning'
     })
   } else {
@@ -485,7 +488,7 @@ function next() {}
 
 function finish() {
   Swal.fire({
-    title: `Are you sure you want to finish voting? \nNote that once you click 'OK' button, you cant make any choice again and you can't vote again. Please feel free to make your choice before clicking 'OK' button  \nYou can click 'Cancel' button here and click 'My choice' button to view your vote choice \nThanks`,
+    text: `Are you sure you want to finish voting? \nNote that once you click 'OK' button, you cant make any choice again and you can't vote again. Please feel free to make your choice before clicking 'OK' button  \nYou can click 'Cancel' button here and click 'My choice' button to view your vote choice \nThanks`,
     showDenyButton: true,
     showCancelButton: true,
     confirmButtonText: 'Save',
@@ -619,7 +622,7 @@ function chairmanLogin() {
     window.location.href = "toFinal.html";
   } else {
     Swal.fire({
-      title: "Incorrect details, Kindly please check what you enter and re-type",
+      text: "Incorrect details, Kindly please check what you enter and re-type",
       icon: 'warning'
     })
   }
@@ -1063,6 +1066,16 @@ function stateGov() {
       `;
     }
   }
+}
+
+
+
+
+function toVotingPage(params) {
+  Swal.fire({
+    text: 'No voting options available for this selection. Please choose another option. We apologize for any inconvenience',
+    icon: 'error'
+  })
 }
 
 // (() => {
