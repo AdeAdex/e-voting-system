@@ -14,11 +14,12 @@
   <body class="bg-black w-100">
     <div class="d-flex bg-info contestant-page" >
     <div class="w-100 d-flex flex-column gap-4 justify-content-center p-5 text-center m-auto ">
+      <button>Home</button>
         <button class="btn btn-danger col-10 text-uppercase pt-4 pb-4 m-auto fw-bold" onclick="howPeopleVote(`${window.location.href = 'presidentialFinalResultPage.html'}`)">presidential</button>
-        <button class="btn btn-success col-10 text-uppercase pt-4 pb-4 m-auto fw-bold" >house of representative</button>
-        <button class="btn btn-dark col-10 text-uppercase pt-4 pb-4 m-auto fw-bold" >senatorial</button>
+        <button class="btn btn-success col-10 text-uppercase pt-4 pb-4 m-auto disabled fw-bold" >house of representative</button>
+        <button class="btn btn-dark col-10 text-uppercase pt-4 pb-4 m-auto disabled fw-bold" >senatorial</button>
         <button class="btn btn-warning col-10 text-uppercase pt-4 pb-4 m-auto fw-bold" onclick="howPeopleVote(`${window.location.href = 'stateGovernorFinalResultPage.html'}`)">governorship</button>
-        <button class="btn btn-primary col-10 text-uppercase pt-4 pb-4 m-auto fw-bold" >house of Assembly</button>
+        <button class="btn btn-primary col-10 text-uppercase pt-4 pb-4 m-auto disabled fw-bold" >house of Assembly</button>
     </div>
     </div>
     <script src="e-voting.js"></script>
