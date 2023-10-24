@@ -333,13 +333,17 @@ myVoteResult = "";
 myVoltResultName = "";
 mySelf = "";
 
+
+
 function dispMyChoice() {
   let firstN;
   let lastN;
+
   for (let index = 0; index < votersDetails.length; index++) {
     firstN = `${votersDetails[index].fname}`;
     lastN = `${votersDetails[index].lname}`;
   }
+
   if (electionResult.length == 0) {
     Swal.fire({
       text: "You've not made any choice, Please select a choice first",
@@ -348,50 +352,67 @@ function dispMyChoice() {
   } else {
     for (let index = 0; index < electionResult.length; index++) {
       electionResult = JSON.parse(localStorage.getItem("myVoteChoice"));
+
+      // Create a print-friendly version of the content
+      const printContent = `
+        <div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
+          <div class="w-100">
+            <h3 class="sweet-alert-h3 text-center">Thank you for voting <strong id="myOwnSelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Remember to print or screenshot your vote's result.</p></h3>
+          </div>
+          <div class="m-2 text-center fw-bold text-uppercase">
+            <table class="table w-100 fs-6">
+              <tr>
+                <th>Name</th>
+                <th>Party logo</th>
+                <th>Party Name</th>
+              </tr>
+              <tr>
+                <td id="myOwnVoltResultName">${electionResult[index].myElectionChoiceName}</td>
+                <td></td>
+                <td id="myOwnVoltResult" class="">${electionResult[index].myElectionChoice}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      `;
+
       Swal.fire({
         title: "Voting successful",
         text: "You won't be able to revert this!",
         icon: "success",
-        html: `
-<div class="w-100 bg-light h-75 m-auto d-flex flex-column sweet-alert-modal-content">
-<div class="w-100">
-  <h3 class="sweet-alert-h3 text-center">Thank you for voting <strong id="myOwnSelf">${firstN} ${lastN}</strong> <p class="fs-3 mt-2">Remember to print or screenshot your volt's result.</p></h3>
-</div>
-<div class="m-2 text-center fw-bold text-uppercase">
-<table class="table w-100 fs-6 ">
-  <tr>
-    <th>Name</th>
-    <th>Party logo</th>
-    <th>Party Name</th>
-  </tr>
-  <tr>
-    <td id="myOwnVoltResultName">${electionResult[index].myElectionChoiceName}</td>
-    <td></td>
-    <td id="myOwnVoltResult" class="">${electionResult[index].myElectionChoice}</td>
-  </tr>
-</table> 
-</div>
-<footer class="w-100">
-  <button class="btn btn-primary fs-4 print-btn" onclick="window.print();">Print</button>
-</footer>
-</div>
-`,
+        html: printContent,
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Okay",
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire(
-            "Saved!",
-            `Your Choice for the Nigeria Presidential election has been saved.`,
-            "success"
-          );
+          // Swal.fire(
+          //   "Saved!",
+          //   `Your Choice for the Nigeria Presidential election has been saved.`,
+          //   "success"
+          // );
+          const printWindow = window.open('', '', 'width=600,height=600');
+          printWindow.document.open();
+          printWindow.document.write(`
+            <html>
+              <head>
+                <title>Print</title>
+              </head>
+              <body>
+                ${printContent}
+              </body>
+            </html>
+          `);
+          printWindow.document.close();
+          printWindow.print();
+          printWindow.close();
         }
       });
     }
   }
 }
+
 
 var myStateElectionResult = [];
 if (localStorage.myStateVoteChoice) {
@@ -491,11 +512,27 @@ function dispMyStateChoice() {
         confirmButtonText: "Okay",
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire(
-            "Saved!",
-            `Your Choice for the ${votersDetails[index].state} state Governorship election has been saved.`,
-            "success"
-          );
+          // Swal.fire(
+          //   "Saved!",
+          //   `Your Choice for the ${votersDetails[index].state} state Governorship election has been saved.`,
+          //   "success"
+          // );
+
+          const printWindow = window.open('', '', 'width=600,height=600');
+          printWindow.document.open();
+          printWindow.document.write(`
+            <html>
+              <head>
+                <title>Print</title>
+              </head>
+              <body>
+                ${printContent}
+              </body>
+            </html>
+          `);
+          printWindow.document.close();
+          printWindow.print();
+          printWindow.close();
         }
       });
     }
