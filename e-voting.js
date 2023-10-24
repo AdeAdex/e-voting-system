@@ -77,9 +77,10 @@ function submitRegistration() {
     }
   }
   if (foundDetails == true) {
-    alert(
-      "The email or Phone number you supply has been associated with an account already"
-    );
+    Swal.fire({
+      title: 'The email or Phone number you supply has been associated with an account already',
+      icon: 'warning'
+    })
   } else if (
     firstName.value == "" ||
     lastName.value == "" ||
@@ -90,7 +91,7 @@ function submitRegistration() {
     pass.value == ""
   ) {
     // firstName.style.borderColor = "red";
-    alert("All field must be filled.");
+    Swal.fire('All field must be filled!')
   } else if (!email.value.match(validRegex)) {
     emailFeedback.style.display = "block";
     phoneNumberFeedback.style.display = "none";
@@ -346,7 +347,10 @@ function dispMyChoice() {
     lastN = `${votersDetails[index].lname}`;
   }
   if (electionResult.length == 0) {
-    alert("You've not made any choice, Please select a choice first");
+    Swal.fire({
+      title: "You've not made any choice, Please select a choice first",
+      icon: 'warning'
+    })
   } else {
     for (let index = 0; index < electionResult.length; index++) {
       electionResult = JSON.parse(localStorage.getItem("myVoteChoice"));
@@ -437,7 +441,10 @@ function dispMyStateChoice() {
     lastN = `${votersDetails[index].lname}`;
   }
   if (myStateElectionResult.length == 0) {
-    alert("You've not made any choice, Please select a choice first");
+    Swal.fire({
+      title: "You've not made any choice, Please select a choice first",
+      icon: 'warning'
+    })
   } else {
     for (let index = 0; index < myStateElectionResult.length; index++) {
       myStateElectionResult = JSON.parse(
@@ -477,14 +484,21 @@ function dispMyStateChoice() {
 function next() {}
 
 function finish() {
-  let yes = confirm(
-    `Are you sure you want to finish voting? \nNote that once you click 'OK' button, you cant make any choice again and you can't vote again. Please feel free to make your choice before clicking 'OK' button  \nYou can click 'Cancel' button here and click 'My choice' button to view your vote choice \nThanks`
-  );
-  if (yes) {
-    storePresidentialResult();
+  Swal.fire({
+    title: `Are you sure you want to finish voting? \nNote that once you click 'OK' button, you cant make any choice again and you can't vote again. Please feel free to make your choice before clicking 'OK' button  \nYou can click 'Cancel' button here and click 'My choice' button to view your vote choice \nThanks`,
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Save',
+    denyButtonText: `Don't save`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire('Saved!', '', 'success')
+      storePresidentialResult();
     storeGovernorshipResult();
-  } else {
-  }
+    } else if (result.isDenied) {
+      Swal.fire('Changes are not saved', '', 'info')
+    }
+  })
 }
 
 var allPresidentialElectionResult = [];
@@ -604,7 +618,10 @@ function chairmanLogin() {
   if (found == true) {
     window.location.href = "toFinal.html";
   } else {
-    alert("Incorrect details, Kindly please check what you enter and re-type");
+    Swal.fire({
+      title: "Incorrect details, Kindly please check what you enter and re-type",
+      icon: 'warning'
+    })
   }
 }
 
