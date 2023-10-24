@@ -168,6 +168,10 @@ svg text {
   z-index: 3;
 }
 
+#stateOption option {
+  text-transform: capitalize;
+}
+
 .carousel-img {
   border-radius: 50%;
 }

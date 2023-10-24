@@ -677,7 +677,7 @@ function toINECChairman() {
   window.location.href = "inec-chairman-registration-page.html";
 }
 
-function stateGov() {
+function stateChange() {
   var stateOption = document.getElementById("stateOption"); 
   
   if (stateOption.value !== "lagos" && stateOption.value !== "oyo") {
@@ -694,6 +694,9 @@ function stateGov() {
       icon: "info",
     });
   }
+}
+
+function stateGov() {
   generalDiv.innerHTML = "";
   for (let index = 0; index < votersDetails.length; index++) {
     if (votersDetails[index].state == "oyo") {
